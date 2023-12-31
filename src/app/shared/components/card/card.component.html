@@ -1,0 +1,10 @@
+<div
+  [ngClass]="{
+  'cursor-pointer': isClicable,
+}"
+  class="h-[270px] shadow-primary rounded text-dark gap-2.5 p-5 flex flex-col justify-center items-center"
+>
+  <app-icon class="text-[80px]" [name]="iconName"></app-icon>
+  <p class="text-xl font-medium">{{ title }}</p>
+  <p class="text-xl">{{ subtitle }}</p>
+</div>

@@ -1,0 +1,13 @@
+<ng-container *ngIf="data && !isLoading">
+  <app-title>Szczegóły nauczyciela</app-title>
+  <div
+    class="text-xl shadow-primary rounded bg-white text-dark gap-2.5 p-5 flex flex-col mt-8"
+  >
+    <p>Imię i nazwisko: {{ data?.name }}</p>
+    <p>Przedmiot: {{ data?.teachSubject?.subName }}</p>
+    <p>Klasa: {{ data?.teachSclass?.sclassName }}</p>
+    <p>Szkoła: {{ data?.school?.schoolName }}</p>
+  </div>
+</ng-container>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

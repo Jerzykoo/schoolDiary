@@ -1,0 +1,32 @@
+<div class="p-8 w-full flex items-center h-screen">
+  <div class="max-w-[1024px] mx-auto flex flex-col gap-6 text-center">
+    <p class="text-[28px]">Witaj w aplikacji Dziennik szkolny</p>
+    <p class="text-[28px]">Wybierz rolę aby się zalogować</p>
+    <div class="grid grid-cols-3 gap-5">
+      <app-card
+        [isClicable]="true"
+        routerLink="/auth/admin-login"
+        iconName="admin"
+        title="Admin"
+        subtitle="Zaloguj się jako administrator, aby uzyskać dostęp do panelu i zarządzać danymi aplikacji."
+      >
+      </app-card>
+      <app-card
+        [isClicable]="true"
+        routerLink="/auth/student-login"
+        iconName="student"
+        title="Uczeń"
+        subtitle="Zaloguj się jako student, aby przeglądać materiały szkoleniowe i zadania."
+      >
+      </app-card>
+      <app-card
+        [isClicable]="true"
+        routerLink="/auth/teacher-login"
+        iconName="teacher"
+        title="Nauczyciel"
+        subtitle="Zaloguj się jako nauczyciel, aby tworzyć kursy, zadania i śledzić postępy uczniów."
+      >
+      </app-card>
+    </div>
+  </div>
+</div>

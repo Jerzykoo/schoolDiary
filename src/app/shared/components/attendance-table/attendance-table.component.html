@@ -1,0 +1,223 @@
+<div class="pt-5">
+  <button
+    color="basic"
+    [routerLink]="'/admin/attendence/add/' + route.snapshot.params['id']"
+    class="mb-5"
+    mat-raised-button
+    color="primary"
+  >
+    Dodaj obecność
+  </button>
+
+  <table
+    *ngIf="!details"
+    mat-table
+    [dataSource]="data"
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef>Przedmiot</th>
+      <td mat-cell *matCellDef="let element">{{ element?.subject }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="presentNumber">
+      <th mat-header-cell *matHeaderCellDef>Obecności</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.presentNumber }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sessions">
+      <th mat-header-cell *matHeaderCellDef>Liczba zajęć</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.sessions }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="attendencePercentage">
+      <th mat-header-cell *matHeaderCellDef>Procentowa obecność</th>
+      <td mat-cell *matCellDef="let element">
+        {{ (element?.presentNumber * 100) / element?.sessions }} %
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Akcje</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <button mat-raised-button color="warn">Usuń</button>
+            <button
+              mat-raised-button
+              color="basic"
+              (click)="details = element.details"
+            >
+              Zobacz listę obecności
+            </button>
+            <button
+              [routerLink]="
+                '/admin/attendence/edit/' +
+                route.snapshot.params['id'] +
+                '/' +
+                element.subjectId
+              "
+              mat-raised-button
+              color="primary"
+            >
+              Dodaj obecność
+            </button>
+          </div>
+          <!-- <app-icon
+            *ngIf="element.isExpanded"
+            (click)="element.isExpanded = !element.isExpanded"
+            class="text-3xl cursor-pointer"
+            [name]="'arrow-up'"
+          ></app-icon>
+          <app-icon
+            *ngIf="!element.isExpanded"
+            (click)="element.isExpanded = !element.isExpanded"
+            class="text-3xl cursor-pointer"
+            [name]="'arrow-down'"
+          ></app-icon> -->
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<div *ngIf="details" class="py-5">
+  <div class="mb-5 cursor-pointer" (click)="details = null">Powrót</div>
+
+  <div *ngIf="!details?.length" class="text-center">Brak obecności</div>
+
+  <table
+    *ngIf="details?.length"
+    mat-table
+    [dataSource]="details"
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Data</th>
+      <td mat-cell *matCellDef="let element">{{ element?.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.status }}
+      </td>
+    </ng-container>
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumnsAttendenceDetailsScreen"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumnsAttendenceDetailsScreen"
+    ></tr>
+  </table>
+</div>
+
+<!-- <div class="py-5">
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="border-b border-gray-150">
+        <ng-container *ngFor="let header of displayedColumns">
+          <th
+            class="first-of-type:rounded-tr-lg first-of-type:rounded-tl-lg border border-gray-150 px-3 !bg-white"
+          >
+            <app-table-header [name]="header"></app-table-header>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let item of data">
+        <tr
+          class="border-b border-gray-150 hover:bg-gray-150 transition-all w-full"
+        >
+          <td class="first-of-type:pl-2.5 border border-gray-150">
+            <app-table-cell>{{ item.subject }}</app-table-cell>
+          </td>
+
+          <td class="border border-gray-150">
+            <app-table-cell>{{ item.presentNumber }}</app-table-cell>
+          </td>
+
+          <td class="border border-gray-150">
+            <app-table-cell>{{ item.sessions }}</app-table-cell>
+          </td>
+          <td class="border border-gray-150">
+            <app-table-cell
+              >{{
+                (item?.presentNumber * 100) / item?.sessions
+              }}
+              %</app-table-cell
+            >
+          </td>
+          <td class="border border-gray-150">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <button mat-raised-button color="warn">Usuń</button>
+                <button mat-raised-button color="basic">Zobacz</button>
+              </div>
+              <app-icon
+                *ngIf="item.isExpanded"
+                (click)="item.isExpanded = !item.isExpanded"
+                class="text-3xl cursor-pointer"
+                [name]="'arrow-up'"
+              ></app-icon>
+              <app-icon
+                *ngIf="!item.isExpanded"
+                (click)="item.isExpanded = !item.isExpanded"
+                class="text-3xl cursor-pointer"
+                [name]="'arrow-down'"
+              ></app-icon>
+            </div>
+          </td>
+        </tr>
+
+        <ng-container *ngIf="item.isExpanded">
+          <ng-container *ngFor="let element of item.details">
+            <div class="w-full">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="border-b border-gray-150">
+                    <th
+                      class="first-of-type:rounded-tr-lg first-of-type:rounded-tl-lg border border-gray-150 px-3 !bg-white"
+                    >
+                      <app-table-header [name]="'super'"></app-table-header>
+                    </th>
+                    <th
+                      class="first-of-type:rounded-tr-lg first-of-type:rounded-tl-lg border border-gray-150 px-3 !bg-white"
+                    >
+                      <app-table-header [name]="'super'"></app-table-header>
+                    </th>
+                  </tr>
+                </thead>
+  
+                <tbody
+                  class="border-b border-gray-150 hover:bg-gray-150 transition-all w-full"
+                >
+                  <td class="border border-gray-150">
+                    <app-table-cell>super</app-table-cell>
+                  </td>
+  
+                  <td class="border border-gray-150">
+                    <app-table-cell>super</app-table-cell>
+                  </td>
+                </tbody>
+              </table>
+            </div>
+   
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div> -->

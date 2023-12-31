@@ -1,0 +1,28 @@
+<app-title>Dodaj ocenę</app-title>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="max-w-[500px] mt-8">
+  <div class="flex flex-col gap-5">
+    <mat-form-field *ngIf="!route.snapshot.params['subjectId']" class="w-full">
+      <mat-label>Przedmiot</mat-label>
+      <mat-select formControlName="subName" [disabled]="true">
+        <mat-option *ngFor="let item of subjectOptions" [value]="item.value">
+          {{ item.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Ocena</mat-label>
+      <input matInput formControlName="marksObtained" placeholder="Ocena" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="w-full"
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Dodaj
+    </button>
+  </div>
+</form>

@@ -1,0 +1,49 @@
+<div *ngIf="notices?.length">
+  <app-title
+    ><div>Notatki</div>
+    <button
+      routerLink="/admin/notices/add"
+      mat-raised-button
+      color="primary"
+      class="w-[120px]"
+    >
+      Dodaj
+    </button>
+  </app-title>
+  <div class="mt-8">
+    <table mat-table [dataSource]="notices" class="mat-elevation-z8">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Tytuł</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef>Szczegóły</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.details }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Data</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.date | date : "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Akcje</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex items-center gap-2">
+            <button mat-raised-button color="warn">Usuń</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>

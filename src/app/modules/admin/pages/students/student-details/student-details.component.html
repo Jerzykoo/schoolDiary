@@ -1,0 +1,18 @@
+<mat-tab-group>
+  <mat-tab label="Szczegóły">
+    <div class="pt-5">
+      <app-student-details-card
+        [data]="student"
+        [subjects]="subjects"
+      ></app-student-details-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Obecność">
+    <app-attendance-table [data]="finalData"></app-attendance-table>
+  </mat-tab>
+  <mat-tab label="Oceny">
+    <div class="pt-5">
+      <app-marks-table [data]="student?.examResult"></app-marks-table>
+    </div>
+  </mat-tab>
+</mat-tab-group>

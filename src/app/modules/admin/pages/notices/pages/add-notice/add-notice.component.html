@@ -1,0 +1,39 @@
+<app-title><div>Dodaj notatkę</div> </app-title>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="max-w-[500px] mt-8">
+  <div class="flex flex-col gap-5">
+    <mat-form-field class="w-full">
+      <mat-label>Tytuł</mat-label>
+      <input matInput formControlName="title" placeholder="Tytuł" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Szczegóły</mat-label>
+      <input matInput formControlName="details" placeholder="Szczegóły" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [max]="maxDate"
+        formControlName="date"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="w-full"
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Dodaj
+    </button>
+  </div>
+</form>
