@@ -20,6 +20,8 @@ import { TeacherDetailsComponent } from './pages/teachers/pages/teacher-details/
 import { ClassChooseComponent } from './pages/teachers/pages/class-choose/class-choose.component';
 import { SubjectChooseComponent } from './pages/teachers/pages/subject-choose/subject-choose.component';
 import { TeacherAddComponent } from './pages/teachers/pages/teacher-add/teacher-add.component';
+import { SubjectDetailsComponent } from './pages/subjects/pages/subject-details/subject-details.component';
+import { AddSubjectsComponent } from './pages/subjects/pages/add-subjects/add-subjects.component';
 
 const routes: Routes = [
   {
@@ -35,12 +37,15 @@ const routes: Routes = [
       { path: 'teachers/:id', component: TeacherDetailsComponent },
       { path: 'students', component: StudentsComponent },
       { path: 'students/details/:id', component: StudentDetailsComponent },
+      { path: 'subjects/details/:id', component: SubjectDetailsComponent },
+      { path: 'subjects/add/:classId', component: AddSubjectsComponent },
       { path: 'attendence/add/:id', component: AddAttendenceComponent },
       {
         path: 'attendence/edit/:id/:subjectId',
         component: AddAttendenceComponent,
       },
       { path: 'marks/add/:id', component: AddMarkComponent },
+      { path: 'marks/edit/:id/:subjectId', component: AddMarkComponent },
       { path: 'notices', component: NoticesComponent },
       { path: 'notices/add', component: AddNoticeComponent },
       { path: 'class-choose', component: ClassChooseComponent },

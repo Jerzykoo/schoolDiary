@@ -19,6 +19,9 @@ import { AttendanceTableComponent } from './components/attendance-table/attendan
 import { TableCellComponent } from './components/table-cell/table-cell.component';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
 import { MarksTableComponent } from './components/marks-table/marks-table.component';
+import { SubjectDetailsCardComponent } from './components/subject-details-card/subject-details-card.component';
+import { TitleComponent } from './components/title/title.component';
+import { SubjectTableComponent } from './components/subject-table/subject-table.component';
 
 // import { NgxLoaderIndicatorModule } from 'ngx-loader-indicator';
 // import { NgxLoaderIndicatorModule } from 'ngx-loader-indicator';
@@ -37,6 +40,9 @@ import { MarksTableComponent } from './components/marks-table/marks-table.compon
     TableCellComponent,
     TableHeaderComponent,
     MarksTableComponent,
+    SubjectDetailsCardComponent,
+    TitleComponent,
+    SubjectTableComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +74,9 @@ import { MarksTableComponent } from './components/marks-table/marks-table.compon
     TableCellComponent,
     TableHeaderComponent,
     MarksTableComponent,
+    SubjectDetailsCardComponent,
+    TitleComponent,
+    SubjectTableComponent,
     // NgxLoaderIndicatorModule,
   ],
 })

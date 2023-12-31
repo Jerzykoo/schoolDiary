@@ -58,6 +58,14 @@ export class AdminService {
     return this.apiService.get(`/AllSubjects/${localStorage.getItem(USERID)}`);
   }
 
+  getSubject(id: string): Observable<any> {
+    return this.apiService.get(`/Subject/${id}`);
+  }
+
+  addSubject(data: any): Observable<any> {
+    return this.apiService.post(`/SubjectCreate`, data);
+  }
+
   getNotices(): Observable<IUser> {
     return this.apiService.get(`/NoticeList/${localStorage.getItem(USERID)}`);
   }

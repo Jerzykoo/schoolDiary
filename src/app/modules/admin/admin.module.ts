@@ -11,7 +11,6 @@ import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { NoticesComponent } from './pages/notices/notices.component';
-import { TitleComponent } from './components/title/title.component';
 import { AddNoticeComponent } from './pages/notices/pages/add-notice/add-notice.component';
 import { StudentDetailsComponent } from './pages/students/student-details/student-details.component';
 import { AddAttendenceComponent } from './components/add-attendence/add-attendence.component';
@@ -20,6 +19,8 @@ import { TeacherDetailsComponent } from './pages/teachers/pages/teacher-details/
 import { ClassChooseComponent } from './pages/teachers/pages/class-choose/class-choose.component';
 import { SubjectChooseComponent } from './pages/teachers/pages/subject-choose/subject-choose.component';
 import { TeacherAddComponent } from './pages/teachers/pages/teacher-add/teacher-add.component';
+import { SubjectDetailsComponent } from './pages/subjects/pages/subject-details/subject-details.component';
+import { AddSubjectsComponent } from './pages/subjects/pages/add-subjects/add-subjects.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,6 @@ import { TeacherAddComponent } from './pages/teachers/pages/teacher-add/teacher-
     TeachersComponent,
     StudentsComponent,
     NoticesComponent,
-    TitleComponent,
     AddNoticeComponent,
     StudentDetailsComponent,
     AddAttendenceComponent,
@@ -41,6 +41,8 @@ import { TeacherAddComponent } from './pages/teachers/pages/teacher-add/teacher-
     ClassChooseComponent,
     SubjectChooseComponent,
     TeacherAddComponent,
+    SubjectDetailsComponent,
+    AddSubjectsComponent,
   ],
   imports: [CommonModule, SharedModule, AdminRouter],
 })
