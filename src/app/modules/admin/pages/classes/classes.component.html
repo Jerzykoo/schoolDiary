@@ -12,7 +12,13 @@
         <td mat-cell *matCellDef="let element">
           <div class="flex items-center gap-2">
             <button mat-raised-button color="warn">Usuń</button>
-            <button mat-raised-button color="basic">Zobacz</button>
+            <button
+              mat-raised-button
+              color="basic"
+              [routerLink]="'/admin/classes/details/' + element._id"
+            >
+              Zobacz
+            </button>
             <button
               [routerLink]="'/admin/subjects/add/' + element._id"
               mat-raised-button
@@ -20,7 +26,13 @@
             >
               Dodaj przedmioty
             </button>
-            <button mat-raised-button color="primary">Dodaj studenta</button>
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="'/admin/students/add/' + element._id"
+            >
+              Dodaj ucznia
+            </button>
           </div>
         </td>
       </ng-container>

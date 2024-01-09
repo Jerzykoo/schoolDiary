@@ -1,0 +1,38 @@
+<app-title><div>Dodaj ucznia</div> </app-title>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="max-w-[500px] mt-8">
+  <div class="flex flex-col gap-5">
+    <mat-form-field class="w-full">
+      <mat-label>Imię i nazwisko</mat-label>
+      <input matInput formControlName="name" placeholder="Imię i nazwisko" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Numer w dzienniku</mat-label>
+      <input
+        matInput
+        formControlName="rollNum"
+        placeholder="Numer w dzienniku"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Hasło</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        placeholder="Hasło"
+        type="password"
+      />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="w-full"
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Dodaj
+    </button>
+  </div>
+</form>

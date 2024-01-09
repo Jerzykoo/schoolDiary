@@ -22,6 +22,8 @@ import { SubjectChooseComponent } from './pages/teachers/pages/subject-choose/su
 import { TeacherAddComponent } from './pages/teachers/pages/teacher-add/teacher-add.component';
 import { SubjectDetailsComponent } from './pages/subjects/pages/subject-details/subject-details.component';
 import { AddSubjectsComponent } from './pages/subjects/pages/add-subjects/add-subjects.component';
+import { ClassesDetailsComponent } from './pages/classes/pages/classes-details/classes-details.component';
+import { AddStudentComponent } from './pages/classes/pages/add-student/add-student.component';
 
 const routes: Routes = [
   {
@@ -32,10 +34,12 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'classes', component: ClassesComponent },
       { path: 'subjects', component: SubjectsComponent },
+      { path: 'classes/details/:id', component: ClassesDetailsComponent },
       { path: 'teachers', component: TeachersComponent },
       { path: 'teachers/add', component: TeacherAddComponent },
       { path: 'teachers/:id', component: TeacherDetailsComponent },
       { path: 'students', component: StudentsComponent },
+      { path: 'students/add/:classId', component: AddStudentComponent },
       { path: 'students/details/:id', component: StudentDetailsComponent },
       { path: 'subjects/details/:id', component: SubjectDetailsComponent },
       { path: 'subjects/add/:classId', component: AddSubjectsComponent },

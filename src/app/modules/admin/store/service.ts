@@ -62,6 +62,18 @@ export class AdminService {
     return this.apiService.get(`/Subject/${id}`);
   }
 
+  getClassSubjects(classId: string): Observable<any> {
+    return this.apiService.get(`/ClassSubjects/${classId}`);
+  }
+
+  getClassStudents(classId: string): Observable<any> {
+    return this.apiService.get(`/Sclass/Students/${classId}`);
+  }
+
+  getClass(classId: string): Observable<any> {
+    return this.apiService.get(`/Sclass/${classId}`);
+  }
+
   addSubject(data: any): Observable<any> {
     return this.apiService.post(`/SubjectCreate`, data);
   }
@@ -79,6 +91,10 @@ export class AdminService {
 
   getStudent(id: string): Observable<any> {
     return this.apiService.get(`/student/${id}`);
+  }
+
+  registerStudent(data: any): Observable<any> {
+    return this.apiService.post(`/StudentReg`, data);
   }
 
   updateAttendance(data: any, studentId: any): Observable<any> {

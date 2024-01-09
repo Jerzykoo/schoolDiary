@@ -23,7 +23,10 @@
       <input matInput formControlName="sessions" placeholder="Ilość zajęć" />
     </mat-form-field>
 
-    <div class="absolute left-full ml-5 w-10 top-1/2 -translate-y-1/2">
+    <div
+      (click)="removeFormGroup(item, i)"
+      class="absolute left-full ml-5 w-10 top-1/2 -translate-y-1/2"
+    >
       <button mat-raised-button color="warn">Usuń</button>
     </div>
   </div>
@@ -38,6 +41,7 @@
   </button>
 
   <button
+    (click)="submitForm()"
     mat-raised-button
     class="w-full"
     color="primary"

@@ -5,7 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { email } from 'src/app/utils/validators';
+import { email, numbers } from 'src/app/utils/validators';
 import { AuthService } from '../../store/service';
 import { HotToastService } from '@ngneat/hot-toast';
 
@@ -15,10 +15,11 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class StudentLoginComponent {
   public form: UntypedFormGroup = this.fb.group({
-    email: [
-      'jan@gmail.com',
-      [Validators.required, Validators.maxLength(256), email],
+    studentName: [
+      'Tomasz Kowalski',
+      [Validators.required, Validators.maxLength(64)],
     ],
+    rollNum: ['3', [Validators.required, Validators.maxLength(128), numbers]],
     password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
   });
   public checkboxForm: UntypedFormGroup = this.fb.group({
@@ -37,7 +38,14 @@ export class StudentLoginComponent {
       this.form.markAllAsTouched();
       return;
     }
-    console.log('login');
-    this.router.navigate(['/admin/dashboard']);
+
+    this.authService.studentLogin(this.form.value).subscribe((res: any) => {
+      if (res?.message) {
+        this.toast.info(res?.message);
+      } else {
+        this.router.navigate(['/student/dashboard']);
+      }
+      console.log(res);
+    });
   }
 }

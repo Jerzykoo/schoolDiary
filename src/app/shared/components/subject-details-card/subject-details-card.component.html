@@ -1,10 +1,8 @@
-<div
-  class="text-xl shadow-primary rounded bg-white text-dark gap-2.5 p-5 flex flex-col"
->
+<app-card-wrapper>
   <p>Nazwa przedmiotu: {{ data?.subName }}</p>
   <p>Kod przedmiotu: {{ data?.subCode }}</p>
   <p>Ilość zajęć: {{ data?.sessions }}</p>
   <p>Ilość studentów: {{ numberOfStudents }}</p>
   <p>Nazwa klasy: {{ data?.sclassName?.sclassName }}</p>
   <p>Nazwa nauczyciela: {{ data?.teacher?.name }}</p>
-</div>
+</app-card-wrapper>

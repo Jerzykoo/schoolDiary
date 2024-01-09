@@ -1,0 +1,71 @@
+<mat-tab-group>
+  <mat-tab label="Szczegóły">
+    <div class="pt-5">
+      <app-class-details-card
+        [data]="schoolClass"
+        [subjectsNumber]="classSubjects?.length"
+        [studentsNumber]="classStudents?.length"
+      ></app-class-details-card>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Uczniowie">
+    <div class="pt-5">
+      <button
+        color="basic"
+        [routerLink]="'/admin/students/add/' + route.snapshot.params['id']"
+        class="mb-5"
+        mat-raised-button
+        color="primary"
+      >
+        Dodaj ucznia
+      </button>
+
+      <table mat-table [dataSource]="classStudents" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Imię i nazwisko</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="rollNum">
+          <th mat-header-cell *matHeaderCellDef>Numer w dzienniku</th>
+          <td mat-cell *matCellDef="let element">{{ element.rollNum }}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Akcje</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="flex items-center gap-2">
+              <button mat-raised-button color="warn">Usuń</button>
+              <button
+                mat-raised-button
+                color="basic"
+                [routerLink]="'/admin/students/details/' + element._id"
+              >
+                Zobacz
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Przedmioty">
+    <div class="pt-5">
+      <button
+        color="basic"
+        [routerLink]="'/admin/subjects/add/' + route.snapshot.params['id']"
+        class="mb-5"
+        mat-raised-button
+        color="primary"
+      >
+        Dodaj przedmioty
+      </button>
+      <app-subject-table
+        [data]="classSubjects"
+        [displayedColumns]="displayedColumnsSubjects"
+      ></app-subject-table>
+    </div>
+  </mat-tab>
+</mat-tab-group>

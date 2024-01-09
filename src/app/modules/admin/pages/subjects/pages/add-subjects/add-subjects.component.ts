@@ -11,6 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AdminService } from 'src/app/modules/admin/store/service';
 import { ISubjectForm } from '../../state/types';
+import { USERID } from 'src/app/core/services/token.service';
+import { numbers } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-add-subjects',
@@ -18,7 +20,7 @@ import { ISubjectForm } from '../../state/types';
 })
 export class AddSubjectsComponent {
   subjectForm: FormGroup<ISubjectForm> = this.fb.group({
-    sessions: ['', [Validators.required, Validators.maxLength(64)]],
+    sessions: ['', [Validators.required, Validators.maxLength(64), numbers]],
     subCode: ['', [Validators.required, Validators.maxLength(64)]],
     subName: ['', [Validators.required, Validators.maxLength(64)]],
   });
@@ -43,10 +45,46 @@ export class AddSubjectsComponent {
   addNextSubject() {
     (<FormArray>this.form.controls['subjects']).push(
       new FormGroup({
-        sessions: new FormControl('2', { nonNullable: true }),
-        subCode: new FormControl('', { nonNullable: true }),
-        subName: new FormControl('', { nonNullable: true }),
+        sessions: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(64),
+          numbers,
+        ]),
+        subCode: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(64),
+        ]),
+        subName: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(64),
+        ]),
       })
     );
+  }
+  removeFormGroup(item: FormGroup, index: number) {
+    (<FormArray>this.form.controls['subjects'])?.removeAt(index);
+    console.log(item);
+  }
+
+  submitForm() {
+    console.log(this.form.value);
+
+    const form = {
+      subjects: this.form.value.subjects,
+      adminID: localStorage.getItem(USERID),
+      sclassName: this.route.snapshot.params['classId'],
+    };
+    console.log(form);
+
+    this.adminService.addSubject(form).subscribe((res: any) => {
+      console.log(res);
+      this.toast.success(
+        `${
+          this.form.value.subjects.value?.length
+            ? 'Przedmioty zostały dodane'
+            : 'Przedmiot został dodany'
+        } pomyślnie`
+      );
+    });
   }
 }

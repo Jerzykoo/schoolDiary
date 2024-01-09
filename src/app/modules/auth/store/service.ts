@@ -59,6 +59,20 @@ export class AuthService {
     );
   }
 
+  public studentLogin(data: ILogin): Observable<IUser> {
+    return this.apiService.post('/StudentLogin', data).pipe(
+      tap((data: IUser) => {
+        // this.tokenService.saveToken(data.userToken);
+        console.log(data);
+
+        this.tokenService.saveRole(data.role);
+        this.tokenService.saveUserId(data._id);
+        this.store.dispatch(new SetUser(data));
+        // return this.fetchProfile(data.userId);
+      })
+    );
+  }
+
   public getUsers(): Observable<IUser> {
     return this.apiService.get(`/api/user`);
   }
