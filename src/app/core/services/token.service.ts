@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 export const ROLE = 'role';
 export const FULLNAME = 'fullName';
 export const USERID = 'id';
+export const SCHOOLID = 'schoolId';
 export const TOKEN = 'token';
 export const REFRESH_TOKEN = 'refreshToken';
 
@@ -16,6 +17,10 @@ export class TokenService {
   }
   public saveUserId(id: string): void {
     localStorage.setItem(USERID, id);
+  }
+
+  public saveSchoolId(id: string): void {
+    localStorage.setItem(SCHOOLID, id);
   }
 
   public saveFullName(fullname: string): void {
@@ -36,6 +41,10 @@ export class TokenService {
 
   public getUserId(): string | null {
     return localStorage.getItem(USERID);
+  }
+
+  public getSchoolId(): string | null {
+    return localStorage.getItem(SCHOOLID);
   }
 
   // public removeToken(): void {

@@ -27,6 +27,15 @@ export interface IUser {
   schoolName: string;
 }
 
+export interface IStudent {
+  _id: string;
+  name: string;
+  email: string;
+  role: string;
+  school: any;
+  sclassName: any;
+}
+
 export interface IAuthTokens {
   token: string;
   refreshToken: string;
