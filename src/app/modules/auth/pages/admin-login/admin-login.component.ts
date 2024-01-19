@@ -40,7 +40,11 @@ export class AdminLoginComponent {
 
     this.socialAuthService.authState.subscribe((user) => {
       console.log(user);
-
+      this.authService
+        .adminGoogleLogin({ token: user.idToken })
+        .subscribe((res: any) => {
+          this.router.navigate(['/admin/dashboard']);
+        });
       // this.user = user;
       // this.loggedIn = (user != null);
     });
