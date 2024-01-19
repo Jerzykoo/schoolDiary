@@ -15,30 +15,41 @@
 <form [formGroup]="form" (ngSubmit)="submitForm()">
   <div class="mb-5">
     <mat-form-field class="w-full">
-      <mat-label>Email</mat-label>
-      <input
-        matInput
-        formControlName="email"
-        placeholder="Email"
-        value="Sushi"
-      />
+      <mat-label>Imię i nazwisko</mat-label>
+      <input matInput formControlName="name" placeholder="Imię i nazwisko" />
     </mat-form-field>
     <mat-form-field class="w-full">
-      <mat-label>Password</mat-label>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Email" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Nazwa szkoły</mat-label>
+      <input matInput formControlName="schoolName" placeholder="Nazwa szkoły" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Hasło</mat-label>
       <input
         matInput
         formControlName="password"
-        placeholder="Password"
-        value="Sushi"
+        type="password"
+        placeholder="Hasło"
       />
     </mat-form-field>
-    <app-button>Sign up</app-button>
+
+    <button
+      mat-raised-button
+      class="w-full"
+      [disabled]="form.invalid"
+      color="primary"
+    >
+      Zarejestruj
+    </button>
   </div>
 
   <div
     class="text-center text-[16px] 2xl:text-lg text-[#2F2F2F] cursor-pointer"
-    routerLink="/auth/login"
+    routerLink="/auth/admin-login"
   >
-    Back to login
+    Wróć do logowania
   </div>
 </form>

@@ -36,6 +36,17 @@ export class AuthService {
     );
   }
 
+  public adminReg(data: any): Observable<IUser> {
+    return this.apiService.post('/AdminReg', data).pipe(
+      tap((data: IUser) => {
+        this.tokenService.saveRole(data.role);
+        this.tokenService.saveUserId(data._id);
+        this.tokenService.saveFullName(data?.name);
+        this.store.dispatch(new SetUser(data));
+      })
+    );
+  }
+
   public studentLogin(data: ILogin): Observable<IStudent> {
     return this.apiService.post('/StudentLogin', data).pipe(
       tap((data: IStudent) => {

@@ -45,5 +45,7 @@
     </table>
   </div>
 </div>
-
+<app-no-results *ngIf="!notices?.length && !isLoading"
+  >No results</app-no-results
+>
 <app-spinner *ngIf="isLoading"></app-spinner>

@@ -43,4 +43,8 @@
   </div>
 </div>
 
+<app-no-results *ngIf="!classes?.length && !isLoading"
+  >No results</app-no-results
+>
+
 <app-spinner *ngIf="isLoading"></app-spinner>

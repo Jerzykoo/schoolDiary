@@ -18,12 +18,13 @@ import { email } from 'src/app/utils/validators';
 export class AdminRegisterComponent {
   public isSubmitting = false;
   public showPasswordScreen = false;
+
   public form: UntypedFormGroup = this.fb.group({
-    email: [null, [Validators.required, Validators.maxLength(256), email]],
-    password: [
-      null,
-      [Validators.required, Validators.maxLength(64), Validators.minLength(8)],
-    ],
+    email: ['', [Validators.required, Validators.maxLength(256), email]],
+    schoolName: ['', [Validators.required, Validators.maxLength(256)]],
+    role: ['Admin', [Validators.required, Validators.maxLength(256)]],
+    name: ['', [Validators.required, Validators.maxLength(256)]],
+    password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
   });
   public checkboxForm: UntypedFormGroup = this.fb.group({
     isRemember: [false],
@@ -37,9 +38,14 @@ export class AdminRegisterComponent {
   ) {}
 
   public submitForm(): void {
-    // if (this.form.invalid) {
-    //   this.form.markAllAsTouched();
-    //   return;
-    // }
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    this.authService.adminReg(this.form.value).subscribe((res: any) => {
+      console.log(res);
+
+      this.router.navigate(['/admin/dashboard']);
+    });
   }
 }

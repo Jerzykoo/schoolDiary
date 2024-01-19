@@ -3,15 +3,19 @@
     <app-card
       iconName="children"
       title="Liczba uczniów"
-      [subtitle]="students?.length"
+      [subtitle]="students?.length || 0"
     >
     </app-card>
-    <app-card iconName="class" title="Liczba klas" [subtitle]="classes?.length">
+    <app-card
+      iconName="class"
+      title="Liczba klas"
+      [subtitle]="classes?.length || 0"
+    >
     </app-card>
     <app-card
       iconName="teacher"
       title="Liczba nauczycieli"
-      [subtitle]="teachers?.length"
+      [subtitle]="teachers?.length || 0"
     >
     </app-card>
   </div>
