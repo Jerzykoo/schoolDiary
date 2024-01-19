@@ -13,7 +13,7 @@ import { TeachersComponent } from './pages/teachers/teachers.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { NoticesComponent } from './pages/notices/notices.component';
 import { AddNoticeComponent } from './pages/notices/pages/add-notice/add-notice.component';
-import { StudentDetailsComponent } from './pages/students/student-details/student-details.component';
+import { StudentDetailsComponent } from './pages/students/pages/student-details/student-details.component';
 import { AddAttendenceComponent } from './components/add-attendence/add-attendence.component';
 import { AddMarkComponent } from './components/add-mark/add-mark.component';
 import { TeacherDetailsComponent } from './pages/teachers/pages/teacher-details/teacher-details.component';

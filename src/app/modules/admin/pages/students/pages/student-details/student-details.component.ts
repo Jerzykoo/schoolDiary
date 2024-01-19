@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { finalize, forkJoin } from 'rxjs';
-import { AdminService } from '../../../store/service';
+import { AdminService } from '../../../../store/service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

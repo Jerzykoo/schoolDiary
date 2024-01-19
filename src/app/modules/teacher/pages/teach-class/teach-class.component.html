@@ -1,1 +1,39 @@
-<p>teach-class works!</p>
+<app-title>Klasa</app-title>
+
+<div *ngIf="students?.length">
+  <div class="mt-8">
+    <table mat-table [dataSource]="students" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Imię i nazwisko</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="rollNum">
+        <th mat-header-cell *matHeaderCellDef>Numer w dzienniku</th>
+        <td mat-cell *matCellDef="let element">{{ element.rollNum }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Akcje</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex items-center gap-2">
+            <button mat-raised-button color="warn">Usuń</button>
+            <button
+              mat-raised-button
+              color="basic"
+              [routerLink]="'/teacher/student-details/' + element._id"
+            >
+              Zobacz
+            </button>
+            <button mat-raised-button color="primary">Zgłoś obecność</button>
+            <button mat-raised-button color="primary">Wpisz oceny</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>
