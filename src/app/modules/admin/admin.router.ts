@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
-import { NoAuthGuard } from 'src/app/core/guards/no-auth.guard';
 import { AdminComponent } from './admin.component';
-import { AchievementsComponent } from './pages/achievements/achievements.component';
-import { QuizComponent } from './pages/quiz/quiz.component';
-import { SuccessComponent } from './pages/success/success.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ClassesComponent } from './pages/classes/classes.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
@@ -54,18 +50,13 @@ const routes: Routes = [
       { path: 'notices/add', component: AddNoticeComponent },
       { path: 'class-choose', component: ClassChooseComponent },
       { path: 'subject-choose/:classId', component: SubjectChooseComponent },
-      { path: 'achievements', component: AchievementsComponent },
-      { path: 'quiz', component: QuizComponent },
-      { path: 'success', component: SuccessComponent },
       { path: '**', redirectTo: '/admin/dashboard' },
-      // { path: '**', redirectTo: '/start' },
     ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  // providers: [],
   providers: [AuthGuard],
 })
 export class AdminRouter {}

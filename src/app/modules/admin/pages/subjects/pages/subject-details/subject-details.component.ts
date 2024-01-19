@@ -27,8 +27,6 @@ export class SubjectDetailsComponent {
     ).subscribe(([students, subject]) => {
       this.students = students as any;
       this.subject = subject;
-      console.log(students);
-      console.log(subject);
     });
 
     // this.adminService

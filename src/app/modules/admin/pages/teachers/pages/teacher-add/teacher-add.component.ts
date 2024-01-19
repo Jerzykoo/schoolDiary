@@ -18,8 +18,6 @@ export class TeacherAddComponent {
   ) {}
 
   public submitForm(): void {
-    console.log(this.addTeacherForm.form.value);
-
     this.adminService
       .addTeacher(this.addTeacherForm.form.value)
       .subscribe((res: any) => {
@@ -28,7 +26,6 @@ export class TeacherAddComponent {
         } else {
           this.toast.success('Nauczyciel został dodany pomyślnie');
         }
-        console.log(res);
 
         this.router.navigate([`/admin/teachers`]);
       });

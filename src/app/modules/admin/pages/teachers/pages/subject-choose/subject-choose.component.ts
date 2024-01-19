@@ -29,12 +29,10 @@ export class SubjectChooseComponent {
         } else {
           this.subjects = res;
         }
-        console.log(res);
       });
   }
 
   selectSubject(element: any) {
-    console.log(element);
     this.addTeacherForm.form.get('teachSubject')?.patchValue(element._id);
     this.router.navigate([`/admin/teachers/add`]);
   }

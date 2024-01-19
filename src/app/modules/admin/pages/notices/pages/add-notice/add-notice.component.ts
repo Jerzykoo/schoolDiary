@@ -34,7 +34,6 @@ export class AddNoticeComponent {
     // }
 
     this.adminService.addNotice(this.form.value).subscribe((res: any) => {
-      console.log(res);
       this.toast.success('Notatka została dodana pomyślnie');
       this.router.navigate(['/admin/notices']);
     });

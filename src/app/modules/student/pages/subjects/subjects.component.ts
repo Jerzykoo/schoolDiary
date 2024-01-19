@@ -26,7 +26,6 @@ export class SubjectsComponent {
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((student) => {
         this.student = student;
-        console.log(student);
       });
   }
 }

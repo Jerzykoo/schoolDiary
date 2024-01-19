@@ -30,9 +30,6 @@ export class ClassesDetailsComponent {
       this.schoolClass = schoolClass;
       this.classSubjects = classSubjects;
       this.classStudents = classStudents;
-      console.log(schoolClass);
-      console.log(classSubjects);
-      console.log(classStudents);
     });
   }
 }

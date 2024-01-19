@@ -22,13 +22,6 @@ export class MenubarComponent {
     public tokenService: TokenService
   ) {}
 
-  ngOnInit() {
-    this.user$.subscribe((res: any) => {
-      console.log(res);
-    });
-    console.log(this.role);
-  }
-
   public togglePopover(): void {
     this.popoverOpen = !this.popoverOpen;
   }

@@ -73,14 +73,12 @@ export class PopoverComponent implements OnInit, OnDestroy {
   private getOverlayConfig(): OverlayConfig {
     const left = [
       {
-        // left bottom align
         originX: 'start',
         originY: 'bottom',
         overlayX: 'start',
         overlayY: 'top',
       },
       {
-        // left top align
         originX: 'start',
         originY: 'top',
         overlayX: 'start',
@@ -89,14 +87,12 @@ export class PopoverComponent implements OnInit, OnDestroy {
     ] as any[];
     const right = [
       {
-        // right bottom align
         originX: 'end',
         originY: 'bottom',
         overlayX: 'end',
         overlayY: 'top',
       },
       {
-        // right top align
         originX: 'end',
         originY: 'top',
         overlayX: 'end',

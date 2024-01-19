@@ -30,8 +30,6 @@ export class DashboardComponent {
     ).subscribe(([subject, classStudents]) => {
       this.subject = subject;
       this.classStudents = classStudents;
-      console.log(subject);
-      console.log(classStudents);
     });
   }
 }

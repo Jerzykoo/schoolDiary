@@ -3,15 +3,6 @@ export enum UserRolesEnum {
   STUDENT = 2,
 }
 
-// export interface IUser {
-//   email: string;
-//   firstName: string;
-//   lastName: string;
-//   password: string;
-//   roleId: number;
-//   userID: number;
-// }
-
 export interface IResponseUser {
   userId: number;
   roleId: number;

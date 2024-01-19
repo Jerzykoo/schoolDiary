@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminRouter } from './admin.router';
-import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
-import { AddUserDialogComponent } from './components/add-user-dialog/add-user-dialog.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ClassesComponent } from './pages/classes/classes.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
@@ -28,8 +26,6 @@ import { AddStudentComponent } from './pages/classes/pages/add-student/add-stude
   declarations: [
     AdminComponent,
     DashboardComponent,
-    EditUserDialogComponent,
-    AddUserDialogComponent,
     ClassesComponent,
     SubjectsComponent,
     TeachersComponent,

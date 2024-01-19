@@ -22,7 +22,6 @@ export class TeachersComponent {
       .getTeachers()
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((res: any) => {
-        console.log(res);
         this.teachers = res;
       });
   }

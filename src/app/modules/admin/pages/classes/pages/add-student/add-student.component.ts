@@ -36,7 +36,6 @@ export class AddStudentComponent {
       role: 'student',
       adminID: localStorage.getItem(USERID),
     };
-    console.log(form);
 
     this.adminService.registerStudent(form).subscribe((res: any) => {
       if (res?.message) {
@@ -47,7 +46,6 @@ export class AddStudentComponent {
           `/admin/classes/details${this.route.snapshot.params['classId']}`,
         ]);
       }
-      console.log(res);
     });
   }
 }

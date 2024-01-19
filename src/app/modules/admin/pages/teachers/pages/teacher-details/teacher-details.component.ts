@@ -20,8 +20,6 @@ export class TeacherDetailsComponent {
       .getTeacher(this.route.snapshot.params['id'])
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((res: any) => {
-        console.log(res);
-
         this.data = res;
       });
   }

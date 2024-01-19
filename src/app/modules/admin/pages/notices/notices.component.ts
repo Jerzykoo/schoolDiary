@@ -17,7 +17,6 @@ export class NoticesComponent {
       .getNotices()
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((res: any) => {
-        console.log(res);
         this.notices = res;
       });
   }

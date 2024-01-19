@@ -31,8 +31,6 @@ export class StudentDetailsComponent {
       this.adminService.getAllSubjects()
     ).subscribe(([student, subjects]) => {
       this.student = student;
-      console.log(student);
-      console.log(subjects);
       subjects.forEach((subject: any) => {
         const element: any = {
           subject: subject.subName,
@@ -50,24 +48,6 @@ export class StudentDetailsComponent {
         this.finalData.push(element);
       });
       this.finalData = [...this.finalData];
-
-      console.log(this.finalData);
     });
-
-    // this.adminService
-    //   .getStudent(this.route.snapshot.params['id'])
-    //   .pipe(finalize(() => (this.isLoading = false)))
-    //   .subscribe((res: any) => {
-    //     console.log(res);
-    //     this.student = res;
-    //   });
-
-    // this.adminService
-    //   .getAllSubjects()
-    //   .pipe(finalize(() => (this.isLoading = false)))
-    //   .subscribe((res: any) => {
-    //     console.log(res);
-    //     this.subjects = res;
-    //   });
   }
 }

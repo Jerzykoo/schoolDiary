@@ -7,7 +7,6 @@ export const SCHOOLID = 'schoolId';
 export const TEACH_SUBJECT_ID = 'teachSubjectId';
 export const TEACH_CLASS_ID = 'teachClassId';
 export const TOKEN = 'token';
-export const REFRESH_TOKEN = 'refreshToken';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
@@ -65,10 +64,24 @@ export class TokenService {
     return localStorage.getItem(TEACH_CLASS_ID);
   }
 
-  // public removeToken(): void {
-  //   localStorage.removeItem(TOKEN);
-  // }
-
+  public removeToken(): void {
+    localStorage.removeItem(TOKEN);
+  }
+  public removeRole(): void {
+    localStorage.removeItem(ROLE);
+  }
+  public removeSchoolId(): void {
+    localStorage.removeItem(SCHOOLID);
+  }
+  public removeTeachSubjectId(): void {
+    localStorage.removeItem(TEACH_SUBJECT_ID);
+  }
+  public removeTeachClassId(): void {
+    localStorage.removeItem(TEACH_CLASS_ID);
+  }
+  public removeFullName(): void {
+    localStorage.removeItem(FULLNAME);
+  }
   public removeUserId(): void {
     localStorage.removeItem(USERID);
   }

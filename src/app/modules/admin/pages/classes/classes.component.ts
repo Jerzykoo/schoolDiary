@@ -17,7 +17,6 @@ export class ClassesComponent {
       .getClasses()
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((res: any) => {
-        console.log(res);
         this.classes = res;
       });
   }

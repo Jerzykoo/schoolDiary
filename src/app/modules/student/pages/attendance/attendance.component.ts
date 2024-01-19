@@ -49,9 +49,6 @@ export class AttendanceComponent {
             this.attandanceTable = [...this.attandanceTable, item];
           }
         });
-
-        console.log(this.attandanceTable);
-        console.log(this.attendance);
       });
   }
 

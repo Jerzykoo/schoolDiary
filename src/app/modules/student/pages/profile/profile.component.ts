@@ -25,7 +25,6 @@ export class ProfileComponent {
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((student) => {
         this.student = student;
-        console.log(student);
       });
   }
 }

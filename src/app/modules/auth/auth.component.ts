@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnDestroy {
-  // public src = 'assets/images/books1.jpg';
   public src = 'assets/images/school.png';
   private subscription$: Subscription = new Subscription();
 

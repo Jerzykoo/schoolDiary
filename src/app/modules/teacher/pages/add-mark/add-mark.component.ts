@@ -42,7 +42,6 @@ export class AddMarkComponent {
         title: el.subName,
         value: el._id,
       }));
-      console.log(this.subjectOptions);
     });
   }
 
@@ -51,8 +50,6 @@ export class AddMarkComponent {
       this.form
         .get('subName')
         ?.patchValue(this.route.snapshot.params['subjectId']);
-
-      console.log(this.form.value);
     }
   }
 
@@ -65,7 +62,6 @@ export class AddMarkComponent {
         } else {
           this.toast.success('Ocena została dodana pomyślnie');
         }
-        console.log(res);
 
         this.router.navigate([`/teacher/teach-class`]);
       });

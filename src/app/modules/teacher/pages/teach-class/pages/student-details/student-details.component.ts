@@ -37,7 +37,6 @@ export class StudentDetailsComponent {
         this.attendance = student.attendance.filter(
           (a: any) => a?.subName?._id === this.subjectId
         );
-        console.log(this.student);
 
         this.attendance.forEach((item: any) => {
           let el = this.attandanceTable?.find(
@@ -48,9 +47,6 @@ export class StudentDetailsComponent {
             this.attandanceTable = [...this.attandanceTable, item];
           }
         });
-        console.log(this.attandanceTable);
-
-        console.log(this.attendance);
       });
   }
 

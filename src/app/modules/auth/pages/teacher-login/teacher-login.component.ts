@@ -42,8 +42,6 @@ export class TeacherLoginComponent {
       if (res?.message) {
         this.toast.info(res?.message);
       } else {
-        console.log(res);
-
         this.router.navigate(['/teacher/dashboard']);
       }
     });

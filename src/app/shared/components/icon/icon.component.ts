@@ -1,4 +1,3 @@
-import { AsyncPipe, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -26,10 +25,10 @@ export class IconComponent implements OnInit {
   constructor(private _sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    this._initSvg();
+    this._getSvg();
   }
 
-  private _initSvg(): void {
+  private _getSvg(): void {
     const url = `./assets/icons/${this.name}.svg`;
 
     if (svgsCache.has(url)) {

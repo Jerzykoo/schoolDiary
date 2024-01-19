@@ -26,10 +26,6 @@ export class ComplainComponent {
     private tokenService: TokenService
   ) {}
 
-  ngOnInit() {
-    console.log(this.tokenService.getSchoolId());
-  }
-
   submitForm() {
     const form = {
       ...this.form.value,
@@ -40,7 +36,6 @@ export class ComplainComponent {
       if (res?.message) {
         this.toast.info(res.message);
       } else {
-        console.log(res);
         this.toast.success('Skarga została pomyślnie złożona');
         // this.form.reset({}, { emitEvent: false });
       }
@@ -48,8 +43,6 @@ export class ComplainComponent {
   }
 
   ngOnDestroy() {
-    console.log('s');
-
     this.form.reset({}, { emitEvent: false });
   }
 }

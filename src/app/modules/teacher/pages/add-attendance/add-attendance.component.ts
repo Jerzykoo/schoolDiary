@@ -38,8 +38,6 @@ export class AddAttendanceComponent {
       this.form
         .get('subName')
         ?.patchValue(this.route.snapshot.params['subjectId']);
-
-      console.log(this.form.value);
     }
   }
 
@@ -52,7 +50,6 @@ export class AddAttendanceComponent {
         } else {
           this.toast.success('Obecność została dodana pomyślnie');
         }
-        console.log(res);
 
         this.router.navigate([`/teacher/teach-class`]);
       });

@@ -4,8 +4,6 @@ import { IUser } from '../../store/types';
 import { MatDialog } from '@angular/material/dialog';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { AddUserDialogComponent } from '../../components/add-user-dialog/add-user-dialog.component';
-import { EditUserDialogComponent } from '../../components/edit-user-dialog/edit-user-dialog.component';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
@@ -34,15 +32,12 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.adminService.getStudents().subscribe((res: any) => {
-      console.log(res);
       this.students = res;
     });
     this.adminService.getTeachers().subscribe((res: any) => {
-      console.log(res);
       this.teachers = res;
     });
     this.adminService.getClasses().subscribe((res: any) => {
-      console.log(res);
       this.classes = res;
     });
   }

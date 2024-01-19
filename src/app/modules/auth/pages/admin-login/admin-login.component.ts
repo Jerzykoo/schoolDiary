@@ -38,7 +38,6 @@ export class AdminLoginComponent {
       return;
     }
     this.authService.adminLogin(this.form.value).subscribe((res: any) => {
-      console.log(res);
       this.router.navigate(['/admin/dashboard']);
     });
   }

@@ -39,7 +39,6 @@ export class AddSubjectsComponent {
 
   ngOnInit() {
     this.addNextSubject();
-    console.log(this.form.value);
   }
 
   addNextSubject() {
@@ -63,21 +62,16 @@ export class AddSubjectsComponent {
   }
   removeFormGroup(item: FormGroup, index: number) {
     (<FormArray>this.form.controls['subjects'])?.removeAt(index);
-    console.log(item);
   }
 
   submitForm() {
-    console.log(this.form.value);
-
     const form = {
       subjects: this.form.value.subjects,
       adminID: localStorage.getItem(USERID),
       sclassName: this.route.snapshot.params['classId'],
     };
-    console.log(form);
 
     this.adminService.addSubject(form).subscribe((res: any) => {
-      console.log(res);
       this.toast.success(
         `${
           this.form.value.subjects.value?.length

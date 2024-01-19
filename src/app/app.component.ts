@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { customIconsConfig } from './shared/custom-icons.config';
-import { DomSanitizer, Title } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
+import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,28 +8,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(
-    private matIconRegistry: MatIconRegistry,
-    private titleService: Title,
-    private domSanitizer: DomSanitizer
-  ) {
-    this.loadCustomIcons();
-  }
+  constructor(private titleService: Title) {}
 
   public ngOnInit(): void {
     this.titleService.setTitle(environment.appName);
-  }
-
-  public loadCustomIcons(): void {
-    if (customIconsConfig) {
-      customIconsConfig.icons.forEach((icon) => {
-        this.matIconRegistry.addSvgIcon(
-          icon,
-          this.domSanitizer.bypassSecurityTrustResourceUrl(
-            `../../assets/icons/${icon}.svg`
-          )
-        );
-      });
-    }
   }
 }
