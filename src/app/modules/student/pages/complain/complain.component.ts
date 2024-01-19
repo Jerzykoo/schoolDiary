@@ -13,10 +13,7 @@ import { StudentService } from '../../store/service';
 export class ComplainComponent {
   public form: FormGroup = this.fb.group({
     date: ['', [Validators.required]],
-    complaint: [
-      'niedobry obiad',
-      [Validators.required, Validators.maxLength(128)],
-    ],
+    complaint: ['', [Validators.required, Validators.maxLength(128)]],
   });
 
   maxDate = new Date();
@@ -48,5 +45,11 @@ export class ComplainComponent {
         // this.form.reset({}, { emitEvent: false });
       }
     });
+  }
+
+  ngOnDestroy() {
+    console.log('s');
+
+    this.form.reset({}, { emitEvent: false });
   }
 }
