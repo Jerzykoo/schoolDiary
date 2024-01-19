@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { SetUser } from 'src/app/modules/auth/store/actions';
 import { ILogin, IStudent, ITeacher, IUser } from './types';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -16,8 +17,10 @@ export class AuthService {
     private tokenService: TokenService,
     private store: Store,
     private router: Router,
-    private zone: NgZone
+    private zone: NgZone,
+    private authService: SocialAuthService
   ) {}
+
   public getCurrentUser(token: number): Observable<IUser> {
     return this.apiService.get(`/api/auth/${token}`);
   }

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { email } from 'src/app/utils/validators';
 import { AuthService } from '../../store/service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-admin-login',
@@ -29,8 +30,21 @@ export class AdminLoginComponent {
     private fb: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private socialAuthService: SocialAuthService
   ) {}
+  ngOnInit() {
+    console.log('d');
+
+    console.log(this.authService);
+
+    this.socialAuthService.authState.subscribe((user) => {
+      console.log(user);
+
+      // this.user = user;
+      // this.loggedIn = (user != null);
+    });
+  }
 
   public submitForm(): void {
     if (this.form.invalid) {

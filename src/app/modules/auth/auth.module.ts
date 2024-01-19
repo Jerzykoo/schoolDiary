@@ -9,10 +9,15 @@ import { StudentLoginComponent } from './pages/student-login/student-login.compo
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { TeacherLoginComponent } from './pages/teacher-login/teacher-login.component';
 import { AdminRegisterComponent } from './pages/admin-register/admin-register.component';
+import {
+  GoogleSigninButtonDirective,
+  GoogleSigninButtonModule,
+} from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
     AuthComponent,
+
     ErrorPasswordComponent,
     DividerComponent,
     RoleComponent,
@@ -21,6 +26,6 @@ import { AdminRegisterComponent } from './pages/admin-register/admin-register.co
     TeacherLoginComponent,
     AdminRegisterComponent,
   ],
-  imports: [SharedModule, AuthRouter],
+  imports: [SharedModule, AuthRouter, GoogleSigninButtonModule],
 })
 export class AuthModule {}

@@ -11,7 +11,11 @@ import { AuthState } from './modules/auth/store/state';
 import { environment } from 'src/environments/environment';
 import { HttpCacheInterceptorModule } from '@ngneat/cashew';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {
+  SocialAuthServiceConfig,
+  SocialLoginModule,
+} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -28,6 +32,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       developmentMode: !environment.production,
     }),
     NgxsResetPluginModule.forRoot(),
+    SocialLoginModule,
+  ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '118441662440-oiuhherkddmfs1ksa4igu3l0kf8m09dr.apps.googleusercontent.com'
+            ),
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        },
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent],
 })
