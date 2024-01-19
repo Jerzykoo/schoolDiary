@@ -11,7 +11,7 @@
     <span class="example-spacer"></span>
 
     <button mat-button [matMenuTriggerFor]="menu">
-      Andrzej Kowalski (Admin)
+      {{ fullName }} ({{ role | role }})
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
       <button mat-menu-item>Profil</button>
@@ -24,7 +24,7 @@
       <mat-nav-list *ngIf="role === 'Teacher'">
         <mat-list-item>
           <button routerLink="/teacher/dashboard" mat-button>
-            <mat-icon>dashboard</mat-icon> Dashboard
+            <mat-icon>dashboard</mat-icon> Strona główna
           </button>
         </mat-list-item>
         <mat-list-item>
@@ -33,10 +33,15 @@
           </button>
         </mat-list-item>
         <mat-list-item>
+          <button routerLink="/teacher/notices" mat-button>
+            <mat-icon>speaker_notes</mat-icon> Notatki
+          </button>
+        </mat-list-item>
+        <!-- <mat-list-item>
           <button routerLink="/teacher/complain" mat-button>
             <mat-icon>note_add</mat-icon> Skargi
           </button>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item>
           <button routerLink="/teacher/profile" mat-button>
             <mat-icon>person</mat-icon> Profil
@@ -75,7 +80,7 @@
       <mat-nav-list *ngIf="role === 'Admin'">
         <mat-list-item>
           <button routerLink="/admin/dashboard" mat-button>
-            <mat-icon>dashboard</mat-icon> Dashboard
+            <mat-icon>dashboard</mat-icon> Strona główna
           </button>
         </mat-list-item>
         <mat-list-item>

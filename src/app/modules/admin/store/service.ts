@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ApiService } from 'src/app/core/services/api.service';
 import { IUser } from './types';
-import { USERID } from 'src/app/core/services/token.service';
+import { SCHOOLID, USERID } from 'src/app/core/services/token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {
@@ -93,6 +93,10 @@ export class AdminService {
     return this.apiService.get(`/student/${id}`);
   }
 
+  getTeach(id: string): Observable<any> {
+    return this.apiService.get(`/teacher/${id}`);
+  }
+
   registerStudent(data: any): Observable<any> {
     return this.apiService.post(`/StudentReg`, data);
   }
@@ -107,5 +111,9 @@ export class AdminService {
 
   getFreeSubjectList(classId: string): Observable<IUser> {
     return this.apiService.get(`/FreeSubjectList/${classId}`);
+  }
+
+  getSchoolNotices(): Observable<IUser> {
+    return this.apiService.get(`/NoticeList/${localStorage.getItem(SCHOOLID)}`);
   }
 }

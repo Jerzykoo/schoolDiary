@@ -24,6 +24,8 @@ import { TitleComponent } from './components/title/title.component';
 import { SubjectTableComponent } from './components/subject-table/subject-table.component';
 import { ClassDetailsCardComponent } from './components/class-details-card/class-details-card.component';
 import { CardWrapperComponent } from './components/card-wrapper/card-wrapper.component';
+import { attandanceStatusPipe } from './pipes/attandance-status.pipe';
+import { rolePipe } from './pipes/role.pipe';
 
 // import { NgxLoaderIndicatorModule } from 'ngx-loader-indicator';
 // import { NgxLoaderIndicatorModule } from 'ngx-loader-indicator';
@@ -47,6 +49,8 @@ import { CardWrapperComponent } from './components/card-wrapper/card-wrapper.com
     SubjectTableComponent,
     ClassDetailsCardComponent,
     CardWrapperComponent,
+    attandanceStatusPipe,
+    rolePipe,
   ],
   imports: [
     CommonModule,
@@ -83,6 +87,8 @@ import { CardWrapperComponent } from './components/card-wrapper/card-wrapper.com
     SubjectTableComponent,
     ClassDetailsCardComponent,
     CardWrapperComponent,
+    attandanceStatusPipe,
+    rolePipe,
     // NgxLoaderIndicatorModule,
   ],
 })

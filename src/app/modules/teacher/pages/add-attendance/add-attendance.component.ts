@@ -4,15 +4,15 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { AdminService } from '../../store/service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { AdminService } from 'src/app/modules/admin/store/service';
 
 @Component({
-  selector: 'app-add-attendence',
-  templateUrl: './add-attendence.component.html',
+  selector: 'app-add-attendance',
+  templateUrl: './add-attendance.component.html',
 })
-export class AddAttendenceComponent {
+export class AddAttendanceComponent {
   statusOptions = [
     { title: 'Absent', value: 'Absent' },
     { title: 'Present', value: 'Present' },
@@ -33,20 +33,13 @@ export class AddAttendenceComponent {
     public route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.adminService.getAllSubjects().subscribe((res: any) => {
-      this.subjectOptions = res.map((el: any) => ({
-        title: el.subName,
-        value: el._id,
-      }));
-    });
-  }
-
   ngAfterViewInit() {
     if (this.route.snapshot.params['subjectId']) {
       this.form
         .get('subName')
         ?.patchValue(this.route.snapshot.params['subjectId']);
+
+      console.log(this.form.value);
     }
   }
 
@@ -59,10 +52,9 @@ export class AddAttendenceComponent {
         } else {
           this.toast.success('Obecność została dodana pomyślnie');
         }
+        console.log(res);
 
-        this.router.navigate([
-          `/admin/students/details/${this.route.snapshot.params['id']}`,
-        ]);
+        this.router.navigate([`/teacher/teach-class`]);
       });
   }
 }

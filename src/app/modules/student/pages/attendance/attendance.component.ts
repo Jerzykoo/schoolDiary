@@ -55,17 +55,17 @@ export class AttendanceComponent {
       });
   }
 
+  getAttendanceBySubject(element: any) {
+    return this.attendance.filter(
+      (a: any) => a?.subName?._id === element?.subName?._id
+    );
+  }
+
   getAttendancePresentBySubject(element: any) {
     return this.attendance.filter(
       (a: any) =>
         a?.subName?._id === element?.subName?._id && a?.status === 'Present'
     )?.length;
-  }
-
-  getAttendanceBySubject(element: any) {
-    return this.attendance.filter(
-      (a: any) => a?.subName?._id === element?.subName?._id
-    );
   }
 
   getPercentageAttendance(element: any) {

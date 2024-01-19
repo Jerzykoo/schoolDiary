@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { ROLE } from 'src/app/core/services/token.service';
+import { ROLE, TokenService } from 'src/app/core/services/token.service';
 import { AuthService } from 'src/app/modules/auth/store/service';
 import { AuthState } from 'src/app/modules/auth/store/state';
 
@@ -13,9 +13,14 @@ export class MenubarComponent {
   badgevisible = false;
   public popoverOpen = false;
   public user$ = this.store.select(AuthState.user);
-  role = localStorage.getItem(ROLE);
+  role = this.tokenService.getRole();
+  fullName = this.tokenService.getFullName();
 
-  constructor(private authService: AuthService, private store: Store) {}
+  constructor(
+    private authService: AuthService,
+    private store: Store,
+    public tokenService: TokenService
+  ) {}
 
   ngOnInit() {
     this.user$.subscribe((res: any) => {

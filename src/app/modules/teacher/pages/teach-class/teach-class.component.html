@@ -24,8 +24,24 @@
             >
               Zobacz
             </button>
-            <button mat-raised-button color="primary">Zgłoś obecność</button>
-            <button mat-raised-button color="primary">Wpisz oceny</button>
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="
+                '/teacher/attendence/edit/' + element._id + '/' + subjectId
+              "
+            >
+              Zgłoś obecność
+            </button>
+            <button
+              [routerLink]="
+                '/teacher/marks/edit/' + element._id + '/' + subjectId
+              "
+              mat-raised-button
+              color="primary"
+            >
+              Wpisz oceny
+            </button>
           </div>
         </td>
       </ng-container>

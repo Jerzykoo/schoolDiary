@@ -53,7 +53,7 @@ export class AuthService {
 
         this.tokenService.saveRole(data.role);
         this.tokenService.saveUserId(data._id);
-
+        this.tokenService.saveFullName(data?.name);
         this.store.dispatch(new SetUser(data));
         // return this.fetchProfile(data.userId);
       })
@@ -66,6 +66,7 @@ export class AuthService {
         console.log(data);
         this.tokenService.saveRole(data.role);
         this.tokenService.saveUserId(data._id);
+        this.tokenService.saveFullName(data?.name);
         this.tokenService.saveSchoolId(data.school._id);
       })
     );
@@ -78,6 +79,7 @@ export class AuthService {
         this.tokenService.saveRole(data.role);
         this.tokenService.saveUserId(data._id);
         this.tokenService.saveSchoolId(data.school._id);
+        this.tokenService.saveFullName(data?.name);
         this.tokenService.saveTeachSubjectId(data.teachSubject._id);
         this.tokenService.saveTeachClassId(data.teachSclass._id);
       })

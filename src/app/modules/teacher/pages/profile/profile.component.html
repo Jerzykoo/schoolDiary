@@ -1,1 +1,10 @@
-<p>profile works!</p>
+<app-title>Profil nauczyciela</app-title>
+<app-card-wrapper>
+  <p>Imię i nazwisko: {{ student?.name }}</p>
+  <p>Szkoła: {{ student?.school?.schoolName }}</p>
+  <p>Klasa: {{ student?.teachSclass?.sclassName }}</p>
+  <p>Przedmiot: {{ student?.teachSubject?.subName }}</p>
+  <p>email: {{ student?.email }}</p>
+  <!-- <p>Liczba przedmiotów: {{ subjectsNumber }}</p>
+    <p>Liczba uczniów: {{ studentsNumber }}</p> -->
+</app-card-wrapper>

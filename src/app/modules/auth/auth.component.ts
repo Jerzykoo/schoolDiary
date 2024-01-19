@@ -7,7 +7,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnDestroy {
-  public src = 'assets/images/books1.jpg';
+  // public src = 'assets/images/books1.jpg';
+  public src = 'assets/images/school.png';
   private subscription$: Subscription = new Subscription();
 
   constructor() {}
