@@ -10,7 +10,14 @@ import { ComplainComponent } from './pages/complain/complain.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
-  declarations: [StudentComponent, DashboardComponent, SubjectsComponent, AttendanceComponent, ComplainComponent, ProfileComponent],
+  declarations: [
+    StudentComponent,
+    DashboardComponent,
+    SubjectsComponent,
+    AttendanceComponent,
+    ComplainComponent,
+    ProfileComponent,
+  ],
   imports: [CommonModule, SharedModule, StudentRouter],
 })
 export class StudentModule {}

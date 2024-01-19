@@ -1,10 +1,5 @@
-<div class="pt-5">
-  <table
-    *ngIf="!details"
-    mat-table
-    [dataSource]="attendance"
-    class="mat-elevation-z8"
-  >
+<div *ngIf="!details" class="pt-5">
+  <table mat-table [dataSource]="attandanceTable" class="mat-elevation-z8">
     <ng-container matColumnDef="subName">
       <th mat-header-cell *matHeaderCellDef>Przedmiot</th>
       <td mat-cell *matCellDef="let element">
@@ -21,14 +16,16 @@
 
     <ng-container matColumnDef="presentNumber">
       <th mat-header-cell *matHeaderCellDef>Obecności</th>
-      <td mat-cell *matCellDef="let element">2</td>
+      <td mat-cell *matCellDef="let element">
+        {{ getAttendancePresentBySubject(element) }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="attendencePercentage">
       <th mat-header-cell *matHeaderCellDef>Procentowa obecność</th>
       <td mat-cell *matCellDef="let element">
         <!-- {{ (element?.presentNumber * 100) / element?.sessions }} % -->
-        3
+        {{ getPercentageAttendance(element) | percent }}
       </td>
     </ng-container>
 
@@ -37,11 +34,7 @@
       <td mat-cell *matCellDef="let element">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <button
-              mat-raised-button
-              color="basic"
-              (click)="details = element.details"
-            >
+            <button mat-raised-button color="basic" (click)="details = element">
               Zobacz listę obecności
             </button>
           </div>
@@ -54,20 +47,24 @@
   </table>
 </div>
 
-<!-- <div *ngIf="details" class="py-5">
+<div *ngIf="details" class="py-5">
   <div class="mb-5 cursor-pointer" (click)="details = null">Powrót</div>
 
-  <div *ngIf="!details?.length" class="text-center">Brak obecności</div>
+  <div *ngIf="!getAttendanceBySubject(details)?.length" class="text-center">
+    Brak obecności
+  </div>
 
   <table
-    *ngIf="details?.length"
+    *ngIf="getAttendanceBySubject(details)?.length"
     mat-table
-    [dataSource]="details"
+    [dataSource]="getAttendanceBySubject(details)"
     class="mat-elevation-z8"
   >
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Data</th>
-      <td mat-cell *matCellDef="let element">{{ element?.date }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.date | date : "dd/MM/yyyy" }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
@@ -86,4 +83,4 @@
       *matRowDef="let row; columns: displayedColumnsAttendenceDetailsScreen"
     ></tr>
   </table>
-</div> -->
+</div>

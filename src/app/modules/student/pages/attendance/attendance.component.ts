@@ -18,8 +18,11 @@ export class AttendanceComponent {
     'attendencePercentage',
     'actions',
   ];
+
+  displayedColumnsAttendenceDetailsScreen: string[] = ['date', 'status'];
   details: any = null;
   attendance: any[] = [];
+  attandanceTable: any[] = [];
   constructor(
     private adminService: AdminService,
     public route: ActivatedRoute,
@@ -34,19 +37,44 @@ export class AttendanceComponent {
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((student) => {
         this.student = student;
+        this.attendance = student.attendance;
+        // this.attandanceTable = student.attendance;
 
         student.attendance.forEach((item: any) => {
-          if (
-            !this.attendance.find(
-              (element: any) => element.subName.subName === item.subName.subName
-            )
-          ) {
-            this.attendance.push(item);
+          let el = this.attandanceTable.find(
+            (element: any) => element.subName.subName === item.subName.subName
+          );
+
+          if (!el) {
+            this.attandanceTable = [...this.attandanceTable, item];
           }
         });
-        this.cdr.detectChanges();
 
+        console.log(this.attandanceTable);
         console.log(this.attendance);
       });
+  }
+
+  getAttendancePresentBySubject(element: any) {
+    return this.attendance.filter(
+      (a: any) =>
+        a?.subName?._id === element?.subName?._id && a?.status === 'Present'
+    )?.length;
+  }
+
+  getAttendanceBySubject(element: any) {
+    return this.attendance.filter(
+      (a: any) => a?.subName?._id === element?.subName?._id
+    );
+  }
+
+  getPercentageAttendance(element: any) {
+    let subAttendance = this.attendance.filter(
+      (a: any) => a?.subName?._id === element?.subName?._id
+    )?.length;
+
+    return (
+      this.getAttendancePresentBySubject(element) / element?.subName?.sessions
+    );
   }
 }
