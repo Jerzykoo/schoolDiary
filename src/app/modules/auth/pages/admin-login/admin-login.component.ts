@@ -34,7 +34,6 @@ export class AdminLoginComponent {
     private socialAuthService: SocialAuthService
   ) {}
   ngOnInit() {
-    console.log('d');
 
     console.log(this.authService);
 
@@ -45,8 +44,7 @@ export class AdminLoginComponent {
         .subscribe((res: any) => {
           this.router.navigate(['/admin/dashboard']);
         });
-      // this.user = user;
-      // this.loggedIn = (user != null);
+
     });
   }
 
