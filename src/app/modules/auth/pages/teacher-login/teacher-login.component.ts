@@ -16,7 +16,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 export class TeacherLoginComponent {
   public form: UntypedFormGroup = this.fb.group({
     email: [
-      'jan@gmail.com',
+      'andrzejw@gmail.com',
       [Validators.required, Validators.maxLength(256), email],
     ],
     password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
@@ -37,7 +37,15 @@ export class TeacherLoginComponent {
       this.form.markAllAsTouched();
       return;
     }
-    console.log('login');
-    this.router.navigate(['/admin/dashboard']);
+
+    this.authService.teacherLogin(this.form.value).subscribe((res: any) => {
+      if (res?.message) {
+        this.toast.info(res?.message);
+      } else {
+        console.log(res);
+
+        this.router.navigate(['/teacher/dashboard']);
+      }
+    });
   }
 }

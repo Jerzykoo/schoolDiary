@@ -21,15 +21,38 @@
 
   <mat-drawer-container autosize>
     <mat-drawer #drawer opened="true" mode="side" position="start">
-      <mat-nav-list *ngIf="role === 'Student'">
+      <mat-nav-list *ngIf="role === 'Teacher'">
         <mat-list-item>
-          <button routerLink="/student/dashboard" mat-button>
+          <button routerLink="/teacher/dashboard" mat-button>
             <mat-icon>dashboard</mat-icon> Dashboard
           </button>
         </mat-list-item>
         <mat-list-item>
+          <button routerLink="/teacher/teach-class" mat-button>
+            <mat-icon>subject</mat-icon> Klasa
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button routerLink="/teacher/complain" mat-button>
+            <mat-icon>note_add</mat-icon> Skargi
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button routerLink="/teacher/profile" mat-button>
+            <mat-icon>person</mat-icon> Profil
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+
+      <mat-nav-list *ngIf="role === 'Student'">
+        <!-- <mat-list-item>
+          <button routerLink="/student/dashboard" mat-button>
+            <mat-icon>dashboard</mat-icon> Dashboard
+          </button>
+        </mat-list-item> -->
+        <mat-list-item>
           <button routerLink="/student/subjects" mat-button>
-            <mat-icon>subject</mat-icon> Przedmioty
+            <mat-icon>subject</mat-icon> Oceny
           </button>
         </mat-list-item>
         <mat-list-item>

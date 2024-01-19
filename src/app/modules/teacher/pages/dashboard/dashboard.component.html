@@ -1,0 +1,16 @@
+<div class="w-[1024px] mx-auto">
+  <div class="grid grid-cols-2 gap-5">
+    <app-card
+      iconName="class"
+      title="Liczba uczniów w klasie"
+      [subtitle]="classStudents?.length"
+    >
+    </app-card>
+    <app-card
+      iconName="teacher"
+      title="Liczba lekcji"
+      [subtitle]="subject?.sessions"
+    >
+    </app-card>
+  </div>
+</div>

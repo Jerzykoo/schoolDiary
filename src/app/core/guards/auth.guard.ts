@@ -18,6 +18,8 @@ export class AuthGuard implements CanActivate {
 
   public canActivate(): Observable<boolean> {
     const userId = this.tokenService.getUserId();
+    console.log(userId);
+
     if (userId) {
       return of(true);
     }

@@ -43,9 +43,8 @@ export class StudentLoginComponent {
       if (res?.message) {
         this.toast.info(res?.message);
       } else {
-        this.router.navigate(['/student/dashboard']);
+        this.router.navigate(['/student/subjects']);
       }
-      console.log(res);
     });
   }
 }

@@ -4,6 +4,8 @@ export const ROLE = 'role';
 export const FULLNAME = 'fullName';
 export const USERID = 'id';
 export const SCHOOLID = 'schoolId';
+export const TEACH_SUBJECT_ID = 'teachSubjectId';
+export const TEACH_CLASS_ID = 'teachClassId';
 export const TOKEN = 'token';
 export const REFRESH_TOKEN = 'refreshToken';
 
@@ -21,6 +23,14 @@ export class TokenService {
 
   public saveSchoolId(id: string): void {
     localStorage.setItem(SCHOOLID, id);
+  }
+
+  public saveTeachSubjectId(id: string): void {
+    localStorage.setItem(TEACH_SUBJECT_ID, id);
+  }
+
+  public saveTeachClassId(id: string): void {
+    localStorage.setItem(TEACH_CLASS_ID, id);
   }
 
   public saveFullName(fullname: string): void {
@@ -45,6 +55,14 @@ export class TokenService {
 
   public getSchoolId(): string | null {
     return localStorage.getItem(SCHOOLID);
+  }
+
+  public getTeachSubjectId(): string | null {
+    return localStorage.getItem(TEACH_SUBJECT_ID);
+  }
+
+  public getTeachClassId(): string | null {
+    return localStorage.getItem(TEACH_CLASS_ID);
   }
 
   // public removeToken(): void {

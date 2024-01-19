@@ -8,7 +8,7 @@ import { switchMap, tap } from 'rxjs/operators';
 import { ApiService } from 'src/app/core/services/api.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { SetUser } from 'src/app/modules/auth/store/actions';
-import { ILogin, IStudent, IUser } from './types';
+import { ILogin, IStudent, ITeacher, IUser } from './types';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -67,6 +67,19 @@ export class AuthService {
         this.tokenService.saveRole(data.role);
         this.tokenService.saveUserId(data._id);
         this.tokenService.saveSchoolId(data.school._id);
+      })
+    );
+  }
+
+  public teacherLogin(data: ILogin): Observable<ITeacher> {
+    return this.apiService.post('/TeacherLogin', data).pipe(
+      tap((data: ITeacher) => {
+        console.log(data);
+        this.tokenService.saveRole(data.role);
+        this.tokenService.saveUserId(data._id);
+        this.tokenService.saveSchoolId(data.school._id);
+        this.tokenService.saveTeachSubjectId(data.teachSubject._id);
+        this.tokenService.saveTeachClassId(data.teachSclass._id);
       })
     );
   }

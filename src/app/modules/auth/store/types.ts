@@ -36,6 +36,16 @@ export interface IStudent {
   sclassName: any;
 }
 
+export interface ITeacher {
+  _id: string;
+  name: string;
+  email: string;
+  role: string;
+  school: any;
+  teachSubject: any;
+  teachSclass: any;
+}
+
 export interface IAuthTokens {
   token: string;
   refreshToken: string;
