@@ -38,7 +38,27 @@ export class AdminService {
     return this.apiService.delete(`/api/user/${id}`);
   }
 
-  getStudents(): Observable<IUser> {
+  removeClass(id: number): Observable<any> {
+    return this.apiService.delete(`/Sclass/${id}`);
+  }
+
+  removeSubject(id: number): Observable<any> {
+    return this.apiService.delete(`/Subject/${id}`);
+  }
+
+  removeNotice(id: number): Observable<any> {
+    return this.apiService.delete(`/Notice/${id}`);
+  }
+
+  removeTeacher(id: number): Observable<any> {
+    return this.apiService.delete(`/Teacher/${id}`);
+  }
+
+  removeStudent(id: number): Observable<any> {
+    return this.apiService.delete(`/Student/${id}`);
+  }
+
+  getStudents(): Observable<any> {
     return this.apiService.get(`/Students/${localStorage.getItem(USERID)}`);
   }
 
@@ -78,6 +98,9 @@ export class AdminService {
     return this.apiService.post(`/SubjectCreate`, data);
   }
 
+  addClass(data: any): Observable<any> {
+    return this.apiService.post(`/SclassCreate`, data);
+  }
   getNotices(): Observable<IUser> {
     return this.apiService.get(`/NoticeList/${localStorage.getItem(USERID)}`);
   }

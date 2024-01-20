@@ -1,0 +1,19 @@
+<app-title><div>Dodaj klasę</div> </app-title>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="max-w-[500px] mt-8">
+  <div class="flex flex-col gap-5">
+    <mat-form-field class="w-full">
+      <mat-label>Nazwa klasy</mat-label>
+      <input matInput formControlName="sclassName" placeholder="Nazwa klasy" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="w-full"
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Dodaj
+    </button>
+  </div>
+</form>

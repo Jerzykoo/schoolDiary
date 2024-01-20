@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="editUser()">
+  <div class="p-5">
+    <mat-form-field class="w-full">
+      <mat-label>Nazwa szkoły</mat-label>
+      <input matInput formControlName="schoolName" placeholder="Nazwa szkoły" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Imię i nazwisko</mat-label>
+      <input matInput formControlName="name" placeholder="Imię i nazwisko" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="w-full"
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Zarejestruj
+    </button>
+  </div>
+</form>

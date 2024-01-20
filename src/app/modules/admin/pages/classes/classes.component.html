@@ -1,5 +1,16 @@
+<app-title
+  ><div>Klasy</div>
+  <button
+    routerLink="/admin/classes/add"
+    mat-raised-button
+    color="primary"
+    class="w-[120px]"
+  >
+    Dodaj
+  </button></app-title
+>
+
 <div *ngIf="classes?.length">
-  <app-title>Klasy</app-title>
   <div class="mt-8">
     <table mat-table [dataSource]="classes" class="mat-elevation-z8">
       <ng-container matColumnDef="sclassName">
@@ -11,7 +22,13 @@
         <th mat-header-cell *matHeaderCellDef>Akcje</th>
         <td mat-cell *matCellDef="let element">
           <div class="flex items-center gap-2">
-            <button mat-raised-button color="warn">Usuń</button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="removeClass(element._id)"
+            >
+              Usuń
+            </button>
             <button
               mat-raised-button
               color="basic"
@@ -43,8 +60,6 @@
   </div>
 </div>
 
-<app-no-results *ngIf="!classes?.length && !isLoading"
-  >No results</app-no-results
->
+<app-no-results *ngIf="!classes?.length && !isLoading"></app-no-results>
 
 <app-spinner *ngIf="isLoading"></app-spinner>

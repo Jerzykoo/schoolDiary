@@ -18,7 +18,8 @@ export class AuthService {
     private store: Store,
     private router: Router,
     private zone: NgZone,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private socialAuthService: SocialAuthService
   ) {}
 
   public getCurrentUser(token: number): Observable<IUser> {
@@ -39,10 +40,12 @@ export class AuthService {
   public adminReg(data: any): Observable<IUser> {
     return this.apiService.post('/AdminReg', data).pipe(
       tap((data: IUser) => {
-        this.tokenService.saveRole(data.role);
-        this.tokenService.saveUserId(data._id);
-        this.tokenService.saveFullName(data?.name);
-        this.store.dispatch(new SetUser(data));
+        if (data) {
+          this.tokenService.saveRole(data.role);
+          this.tokenService.saveUserId(data._id);
+          this.tokenService.saveFullName(data?.name);
+          this.store.dispatch(new SetUser(data));
+        }
       })
     );
   }
@@ -50,12 +53,12 @@ export class AuthService {
   public adminGoogleLogin(data: any): Observable<IUser> {
     return this.apiService.post('/AdminGoogleLogin', data).pipe(
       tap((data: IUser) => {
-        console.log(data);
-
-        this.tokenService.saveRole(data.role);
-        this.tokenService.saveUserId(data._id);
-        this.tokenService.saveFullName(data?.name);
-        this.store.dispatch(new SetUser(data));
+        if (data) {
+          this.tokenService.saveRole(data.role);
+          this.tokenService.saveUserId(data._id);
+          this.tokenService.saveFullName(data?.name);
+          this.store.dispatch(new SetUser(data));
+        }
       })
     );
   }
@@ -101,5 +104,8 @@ export class AuthService {
       .subscribe(() =>
         this.zone.run(() => this.router.navigateByUrl('/auth/role'))
       );
+    this.socialAuthService.signOut().then((val) => {
+      console.log(val);
+    });
   }
 }

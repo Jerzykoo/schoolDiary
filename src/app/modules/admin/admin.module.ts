@@ -21,6 +21,7 @@ import { SubjectDetailsComponent } from './pages/subjects/pages/subject-details/
 import { AddSubjectsComponent } from './pages/subjects/pages/add-subjects/add-subjects.component';
 import { ClassesDetailsComponent } from './pages/classes/pages/classes-details/classes-details.component';
 import { AddStudentComponent } from './pages/classes/pages/add-student/add-student.component';
+import { AddClassComponent } from './pages/classes/pages/add-class/add-class.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AddStudentComponent } from './pages/classes/pages/add-student/add-stude
     AddSubjectsComponent,
     ClassesDetailsComponent,
     AddStudentComponent,
+    AddClassComponent,
   ],
   imports: [CommonModule, SharedModule, AdminRouter],
 })

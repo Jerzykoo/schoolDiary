@@ -1,13 +1,12 @@
+<app-title>Przedmioty</app-title>
 <div *ngIf="subjects?.length">
-  <app-title>Przedmioty</app-title>
   <div class="mt-8">
     <app-subject-table
+      (removed)="removeSubject($event)"
       [data]="subjects"
       [displayedColumns]="displayedColumns"
     ></app-subject-table>
   </div>
 </div>
-<app-no-results *ngIf="!subjects?.length && !isLoading"
-  >No results</app-no-results
->
+<app-no-results *ngIf="!subjects?.length && !isLoading"></app-no-results>
 <app-spinner *ngIf="isLoading"></app-spinner>

@@ -20,6 +20,7 @@ import { SubjectDetailsComponent } from './pages/subjects/pages/subject-details/
 import { AddSubjectsComponent } from './pages/subjects/pages/add-subjects/add-subjects.component';
 import { ClassesDetailsComponent } from './pages/classes/pages/classes-details/classes-details.component';
 import { AddStudentComponent } from './pages/classes/pages/add-student/add-student.component';
+import { AddClassComponent } from './pages/classes/pages/add-class/add-class.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'classes', component: ClassesComponent },
+      { path: 'classes/add', component: AddClassComponent },
       { path: 'subjects', component: SubjectsComponent },
       { path: 'classes/details/:id', component: ClassesDetailsComponent },
       { path: 'teachers', component: TeachersComponent },

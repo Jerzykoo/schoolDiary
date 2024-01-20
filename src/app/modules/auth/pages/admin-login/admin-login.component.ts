@@ -9,6 +9,7 @@ import { email } from 'src/app/utils/validators';
 import { AuthService } from '../../store/service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-login',
@@ -25,6 +26,7 @@ export class AdminLoginComponent {
   public checkboxForm: UntypedFormGroup = this.fb.group({
     isRemember: [false],
   });
+  private subscription$: Subscription = new Subscription();
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -34,18 +36,22 @@ export class AdminLoginComponent {
     private socialAuthService: SocialAuthService
   ) {}
   ngOnInit() {
-
-    console.log(this.authService);
-
-    this.socialAuthService.authState.subscribe((user) => {
-      console.log(user);
-      this.authService
-        .adminGoogleLogin({ token: user.idToken })
-        .subscribe((res: any) => {
-          this.router.navigate(['/admin/dashboard']);
-        });
-
-    });
+    this.subscription$.add(
+      this.socialAuthService.authState.subscribe((user) => {
+        console.log(user);
+        if (user) {
+          this.authService
+            .adminGoogleLogin({ token: user.idToken })
+            .subscribe((res: any) => {
+              if (res?.message) {
+                this.toast.warning(res?.message);
+              } else {
+                this.router.navigate(['/admin/dashboard']);
+              }
+            });
+        }
+      })
+    );
   }
 
   public submitForm(): void {
@@ -56,5 +62,8 @@ export class AdminLoginComponent {
     this.authService.adminLogin(this.form.value).subscribe((res: any) => {
       this.router.navigate(['/admin/dashboard']);
     });
+  }
+  ngOnDestroy() {
+    this.subscription$.unsubscribe();
   }
 }

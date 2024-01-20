@@ -3,6 +3,7 @@ import { finalize, forkJoin } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/modules/admin/store/service';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-subject-details',
@@ -17,7 +18,8 @@ export class SubjectDetailsComponent {
   finalData: any[] = [];
   constructor(
     private adminService: AdminService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private toast: HotToastService
   ) {}
   ngOnInit() {
     // this.isLoading = true;
@@ -25,7 +27,13 @@ export class SubjectDetailsComponent {
       this.adminService.getStudents(),
       this.adminService.getSubject(this.route.snapshot.params['id'])
     ).subscribe(([students, subject]) => {
-      this.students = students as any;
+      if (students?.message) {
+        // this.toast.warning(students?.message);
+      } else {
+        this.students = students as any;
+      }
+      console.log(students);
+
       this.subject = subject;
     });
 

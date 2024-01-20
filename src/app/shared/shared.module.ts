@@ -22,6 +22,7 @@ import { CardWrapperComponent } from './components/card-wrapper/card-wrapper.com
 import { attandanceStatusPipe } from './pipes/attandance-status.pipe';
 import { rolePipe } from './pipes/role.pipe';
 import { NoResultsComponent } from './components/no-results/no-results.component';
+import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NoResultsComponent } from './components/no-results/no-results.component
     attandanceStatusPipe,
     rolePipe,
     NoResultsComponent,
+    EditUserDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +78,7 @@ import { NoResultsComponent } from './components/no-results/no-results.component
     attandanceStatusPipe,
     rolePipe,
     NoResultsComponent,
+    EditUserDialogComponent,
   ],
 })
 export class SharedModule {}

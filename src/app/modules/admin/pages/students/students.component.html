@@ -1,5 +1,5 @@
+<app-title>Uczniowie</app-title>
 <div *ngIf="students?.length">
-  <app-title>Uczniowie</app-title>
   <div class="mt-8">
     <table mat-table [dataSource]="students" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -21,7 +21,13 @@
         <th mat-header-cell *matHeaderCellDef>Akcje</th>
         <td mat-cell *matCellDef="let element">
           <div class="flex items-center gap-2">
-            <button mat-raised-button color="warn">Usuń</button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="removeUser(element._id)"
+            >
+              Usuń
+            </button>
             <button
               mat-raised-button
               color="basic"
@@ -29,8 +35,20 @@
             >
               Zobacz
             </button>
-            <button mat-raised-button color="primary">Zgłoś obecność</button>
-            <button mat-raised-button color="primary">Wpisz oceny</button>
+            <button
+              [routerLink]="'/admin/attendence/add/' + element._id"
+              mat-raised-button
+              color="primary"
+            >
+              Zgłoś obecność
+            </button>
+            <button
+              [routerLink]="'/admin/marks/add/' + element._id"
+              mat-raised-button
+              color="primary"
+            >
+              Wpisz oceny
+            </button>
           </div>
         </td>
       </ng-container>

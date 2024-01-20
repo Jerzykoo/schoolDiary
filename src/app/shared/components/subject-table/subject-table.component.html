@@ -18,7 +18,13 @@
     <th mat-header-cell *matHeaderCellDef>Akcje</th>
     <td mat-cell *matCellDef="let element">
       <div class="flex items-center gap-2">
-        <button mat-raised-button color="warn">Usuń</button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="removeSubject(element._id)"
+        >
+          Usuń
+        </button>
         <button
           mat-raised-button
           color="basic"

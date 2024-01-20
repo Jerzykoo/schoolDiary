@@ -1,15 +1,14 @@
+<app-title>Nauczyciele</app-title>
+
+<button
+  color="basic"
+  [routerLink]="'/admin/class-choose'"
+  mat-raised-button
+  color="primary"
+>
+  Dodaj nauczyciela
+</button>
 <div *ngIf="teachers?.length">
-  <app-title>Nauczyciele</app-title>
-
-  <button
-    color="basic"
-    [routerLink]="'/admin/class-choose'"
-    mat-raised-button
-    color="primary"
-  >
-    Dodaj nauczyciela
-  </button>
-
   <div class="mt-8">
     <table mat-table [dataSource]="teachers" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -35,7 +34,13 @@
         <th mat-header-cell *matHeaderCellDef>Akcje</th>
         <td mat-cell *matCellDef="let element">
           <div class="flex items-center gap-2">
-            <button mat-raised-button color="warn">Usuń</button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="removeTeacher(element._id)"
+            >
+              Usuń
+            </button>
             <button
               [routerLink]="'/admin/teachers/' + element._id"
               mat-raised-button
