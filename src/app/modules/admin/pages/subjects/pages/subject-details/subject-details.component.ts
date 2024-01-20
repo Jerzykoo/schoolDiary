@@ -32,7 +32,6 @@ export class SubjectDetailsComponent {
       } else {
         this.students = students as any;
       }
-      console.log(students);
 
       this.subject = subject;
     });

@@ -104,8 +104,6 @@ export class AuthService {
       .subscribe(() =>
         this.zone.run(() => this.router.navigateByUrl('/auth/role'))
       );
-    this.socialAuthService.signOut().then((val) => {
-      console.log(val);
-    });
+    this.socialAuthService.signOut().then((val) => {});
   }
 }

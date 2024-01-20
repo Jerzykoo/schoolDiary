@@ -17,11 +17,8 @@ import { Subscription } from 'rxjs';
 })
 export class AdminLoginComponent {
   public form: UntypedFormGroup = this.fb.group({
-    email: [
-      'jan@gmail.com',
-      [Validators.required, Validators.maxLength(256), email],
-    ],
-    password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
+    email: ['', [Validators.required, Validators.maxLength(256), email]],
+    password: ['', [Validators.required, Validators.maxLength(64)]],
   });
   public checkboxForm: UntypedFormGroup = this.fb.group({
     isRemember: [false],
@@ -38,7 +35,6 @@ export class AdminLoginComponent {
   ngOnInit() {
     this.subscription$.add(
       this.socialAuthService.authState.subscribe((user) => {
-        console.log(user);
         if (user) {
           this.authService
             .adminGoogleLogin({ token: user.idToken })

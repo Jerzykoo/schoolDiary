@@ -15,12 +15,9 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class StudentLoginComponent {
   public form: UntypedFormGroup = this.fb.group({
-    studentName: [
-      'Tomasz Kowalski',
-      [Validators.required, Validators.maxLength(64)],
-    ],
-    rollNum: ['3', [Validators.required, Validators.maxLength(128), numbers]],
-    password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
+    studentName: ['', [Validators.required, Validators.maxLength(64)]],
+    rollNum: ['', [Validators.required, Validators.maxLength(128), numbers]],
+    password: ['', [Validators.required, Validators.maxLength(64)]],
   });
   public checkboxForm: UntypedFormGroup = this.fb.group({
     isRemember: [false],

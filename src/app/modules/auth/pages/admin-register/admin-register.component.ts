@@ -30,7 +30,7 @@ export class AdminRegisterComponent {
     schoolName: ['', [Validators.required, Validators.maxLength(256)]],
     role: ['Admin', [Validators.required, Validators.maxLength(256)]],
     name: ['', [Validators.required, Validators.maxLength(256)]],
-    password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
+    password: ['', [Validators.required, Validators.maxLength(64)]],
   });
   public checkboxForm: UntypedFormGroup = this.fb.group({
     isRemember: [false],
@@ -49,7 +49,6 @@ export class AdminRegisterComponent {
   ngOnInit() {
     this.subscription$.add(
       this.socialAuthService.authState.subscribe((user) => {
-        console.log(user);
         if (user) {
           const dialogRef = this.dialog.open(EditUserDialogComponent, {
             data: { schoolName: '', name: '' },
@@ -66,8 +65,6 @@ export class AdminRegisterComponent {
                   schoolName: result.schoolName,
                 })
                 .subscribe((res: any) => {
-                  console.log(res);
-
                   if (res?.message) {
                     if (res?.message === 'Email already exists') {
                       this.authService

@@ -33,8 +33,6 @@ export class TeachClassComponent {
       .getClassStudents(localStorage.getItem(TEACH_CLASS_ID) as string)
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((res: any) => {
-        console.log(res);
-
         this.students = res;
       });
   }
