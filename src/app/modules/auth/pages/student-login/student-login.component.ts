@@ -16,9 +16,9 @@ import { catchError, throwError } from 'rxjs';
 })
 export class StudentLoginComponent {
   public form: UntypedFormGroup = this.fb.group({
-    studentName: ['Artur S', [Validators.required, Validators.maxLength(64)]],
-    rollNum: ['1', [Validators.required, Validators.maxLength(128), numbers]],
-    password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
+    studentName: ['', [Validators.required, Validators.maxLength(64)]],
+    rollNum: ['', [Validators.required, Validators.maxLength(128), numbers]],
+    password: ['', [Validators.required, Validators.maxLength(64)]],
   });
 
   constructor(
