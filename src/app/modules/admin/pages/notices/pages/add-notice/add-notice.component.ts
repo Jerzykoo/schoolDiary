@@ -13,7 +13,6 @@ import { AdminService } from 'src/app/modules/admin/store/service';
   templateUrl: './add-notice.component.html',
 })
 export class AddNoticeComponent {
-  maxDate = new Date();
   public form: UntypedFormGroup = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(64)]],
     details: ['', [Validators.required, Validators.maxLength(128)]],
@@ -28,11 +27,6 @@ export class AddNoticeComponent {
   ) {}
 
   public submitForm(): void {
-    // if (this.form.invalid) {
-    //   this.form.markAllAsTouched();
-    //   return;
-    // }
-
     this.adminService.addNotice(this.form.value).subscribe((res: any) => {
       this.toast.success('Notatka została dodana pomyślnie');
       this.router.navigate(['/admin/notices']);

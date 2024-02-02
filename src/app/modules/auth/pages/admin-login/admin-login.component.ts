@@ -9,7 +9,7 @@ import { email } from 'src/app/utils/validators';
 import { AuthService } from '../../store/service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { Subscription } from 'rxjs';
+import { Subscription, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-admin-login',
@@ -55,9 +55,17 @@ export class AdminLoginComponent {
       this.form.markAllAsTouched();
       return;
     }
-    this.authService.adminLogin(this.form.value).subscribe((res: any) => {
-      this.router.navigate(['/admin/dashboard']);
-    });
+    this.authService
+      .adminLogin(this.form.value)
+      .pipe(
+        catchError((err: any) => {
+          this.toast.warning(err?.error?.detail);
+          return throwError(err);
+        })
+      )
+      .subscribe((res: any) => {
+        this.router.navigate(['/admin/dashboard']);
+      });
   }
   ngOnDestroy() {
     this.subscription$.unsubscribe();

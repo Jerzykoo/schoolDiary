@@ -4,14 +4,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'role',
 })
 export class rolePipe implements PipeTransform {
-  transform(value: string | null) {
-    if (value === 'Teacher') {
+  transform(value?: string | null) {
+    if (value === 'teacher') {
       return 'Nauczyciel';
     }
-    if (value === 'Admin') {
+    if (value === 'admin') {
       return 'Administrator';
     }
-    if (value === 'Student') {
+    if (value === 'student') {
       return 'Uczeń';
     }
     return '';

@@ -14,8 +14,8 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class AddAttendenceComponent {
   statusOptions = [
-    { title: 'Absent', value: 'Absent' },
-    { title: 'Present', value: 'Present' },
+    { title: 'Nieobecność', value: 'Absent' },
+    { title: 'Obecność', value: 'Present' },
   ];
   subjectOptions: any[] = [];
   maxDate = new Date();

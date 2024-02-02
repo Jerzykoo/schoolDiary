@@ -14,14 +14,22 @@
       {{ fullName }} ({{ role | role }})
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
-      <button mat-menu-item>Profil</button>
+      <button
+        *ngIf="role === 'student' || role === 'teacher'"
+        mat-menu-item
+        [routerLink]="
+          role === 'student' ? '/student/profile' : '/teacher/profile'
+        "
+      >
+        Profil
+      </button>
       <button mat-menu-item (click)="logout()">Wyloguj</button>
     </mat-menu>
   </mat-toolbar>
 
   <mat-drawer-container autosize>
     <mat-drawer #drawer opened="true" mode="side" position="start">
-      <mat-nav-list *ngIf="role === 'Teacher'">
+      <mat-nav-list *ngIf="role === 'teacher'">
         <mat-list-item>
           <button routerLink="/teacher/dashboard" mat-button>
             <mat-icon>dashboard</mat-icon> Strona główna
@@ -49,7 +57,7 @@
         </mat-list-item>
       </mat-nav-list>
 
-      <mat-nav-list *ngIf="role === 'Student'">
+      <mat-nav-list *ngIf="role === 'student'">
         <!-- <mat-list-item>
           <button routerLink="/student/dashboard" mat-button>
             <mat-icon>dashboard</mat-icon> Dashboard
@@ -77,7 +85,7 @@
         </mat-list-item>
       </mat-nav-list>
 
-      <mat-nav-list *ngIf="role === 'Admin'">
+      <mat-nav-list *ngIf="role === 'admin'">
         <mat-list-item>
           <button routerLink="/admin/dashboard" mat-button>
             <mat-icon>dashboard</mat-icon> Strona główna

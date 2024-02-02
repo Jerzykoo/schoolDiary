@@ -5,9 +5,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { email, numbers } from 'src/app/utils/validators';
+import { numbers } from 'src/app/utils/validators';
 import { AuthService } from '../../store/service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-student-login',
@@ -15,12 +16,9 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class StudentLoginComponent {
   public form: UntypedFormGroup = this.fb.group({
-    studentName: ['', [Validators.required, Validators.maxLength(64)]],
-    rollNum: ['', [Validators.required, Validators.maxLength(128), numbers]],
-    password: ['', [Validators.required, Validators.maxLength(64)]],
-  });
-  public checkboxForm: UntypedFormGroup = this.fb.group({
-    isRemember: [false],
+    studentName: ['Artur S', [Validators.required, Validators.maxLength(64)]],
+    rollNum: ['1', [Validators.required, Validators.maxLength(128), numbers]],
+    password: ['Test123!', [Validators.required, Validators.maxLength(64)]],
   });
 
   constructor(
@@ -36,12 +34,20 @@ export class StudentLoginComponent {
       return;
     }
 
-    this.authService.studentLogin(this.form.value).subscribe((res: any) => {
-      if (res?.message) {
-        this.toast.info(res?.message);
-      } else {
-        this.router.navigate(['/student/subjects']);
-      }
-    });
+    this.authService
+      .studentLogin(this.form.value)
+      .pipe(
+        catchError((err: any) => {
+          this.toast.warning(err?.error?.detail);
+          return throwError(err);
+        })
+      )
+      .subscribe((res: any) => {
+        if (res?.message) {
+          this.toast.info(res?.message);
+        } else {
+          this.router.navigate(['/student/subjects']);
+        }
+      });
   }
 }

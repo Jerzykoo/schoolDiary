@@ -14,8 +14,8 @@ import { AdminService } from 'src/app/modules/admin/store/service';
 })
 export class AddAttendanceComponent {
   statusOptions = [
-    { title: 'Absent', value: 'Absent' },
-    { title: 'Present', value: 'Present' },
+    { title: 'Nieobecność', value: 'Absent' },
+    { title: 'Obecność', value: 'Present' },
   ];
   subjectOptions: any[] = [];
   maxDate = new Date();

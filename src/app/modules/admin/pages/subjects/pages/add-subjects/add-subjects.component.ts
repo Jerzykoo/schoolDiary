@@ -26,7 +26,9 @@ export class AddSubjectsComponent {
   });
 
   form: FormGroup = this.fb.group({
-    subjects: new FormArray([] as Array<FormGroup<ISubjectForm>>, {}),
+    subjects: new FormArray([] as Array<FormGroup<ISubjectForm>>, {
+      validators: [Validators.required],
+    }),
   });
 
   constructor(

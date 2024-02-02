@@ -8,23 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-  MatNativeDateModule,
-} from '@angular/material/core';
-// import {
-//   DateAdapter,
-//   MAT_DATE_FORMATS,
-//   MAT_DATE_LOCALE,
-// } from '@angular/material';
-import {
-  MomentDateModule,
-  MomentDateAdapter,
-} from '@angular/material-moment-adapter';
-
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -52,13 +36,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTabsModule,
     MatTableModule,
   ],
-  providers: [
-    // {
-    //   provide: DateAdapter,
-    //   useClass: MomentDateAdapter,
-    //   deps: [MAT_DATE_LOCALE],
-    // },
-    // { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-  ],
+  providers: [],
 })
 export class AppMaterialModule {}

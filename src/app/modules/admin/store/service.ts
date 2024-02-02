@@ -113,11 +113,11 @@ export class AdminService {
   }
 
   getStudent(id: string): Observable<any> {
-    return this.apiService.get(`/student/${id}`);
+    return this.apiService.get(`/Student/${id}`);
   }
 
   getTeach(id: string): Observable<any> {
-    return this.apiService.get(`/teacher/${id}`);
+    return this.apiService.get(`/Teacher/${id}`);
   }
 
   registerStudent(data: any): Observable<any> {

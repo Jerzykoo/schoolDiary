@@ -13,7 +13,7 @@ export class MenubarComponent {
   badgevisible = false;
   public popoverOpen = false;
   public user$ = this.store.select(AuthState.user);
-  role = this.tokenService.getRole();
+  role = this.tokenService.getRole()?.toLowerCase();
   fullName = this.tokenService.getFullName();
 
   constructor(

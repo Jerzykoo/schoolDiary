@@ -14,12 +14,7 @@
 
     <mat-form-field>
       <mat-label>Data</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        [max]="maxDate"
-        formControlName="date"
-      />
+      <input matInput [matDatepicker]="picker" formControlName="date" />
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"

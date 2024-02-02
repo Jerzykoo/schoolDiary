@@ -15,8 +15,8 @@ import { numbers } from 'src/app/utils/validators';
 })
 export class AddMarkComponent {
   statusOptions = [
-    { title: 'Absent', value: 'Absent' },
-    { title: 'Present', value: 'Present' },
+    { title: 'Nieobecność', value: 'Absent' },
+    { title: 'Obecność', value: 'Present' },
   ];
   subjectOptions: any[] = [];
   maxDate = new Date();

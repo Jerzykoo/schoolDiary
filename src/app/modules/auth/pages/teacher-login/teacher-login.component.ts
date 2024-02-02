@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { email } from 'src/app/utils/validators';
 import { AuthService } from '../../store/service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-teacher-login',
@@ -35,12 +36,20 @@ export class TeacherLoginComponent {
       return;
     }
 
-    this.authService.teacherLogin(this.form.value).subscribe((res: any) => {
-      if (res?.message) {
-        this.toast.info(res?.message);
-      } else {
-        this.router.navigate(['/teacher/dashboard']);
-      }
-    });
+    this.authService
+      .teacherLogin(this.form.value)
+      .pipe(
+        catchError((err: any) => {
+          this.toast.warning(err?.error?.detail);
+          return throwError(err);
+        })
+      )
+      .subscribe((res: any) => {
+        if (res?.message) {
+          this.toast.info(res?.message);
+        } else {
+          this.router.navigate(['/teacher/dashboard']);
+        }
+      });
   }
 }
